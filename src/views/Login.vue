@@ -2,8 +2,8 @@
     <form id="login" @submit="checkForm" action="#" method="post">
         <div class="login-header">
             <p>Login</p>
-            <span>/</span>
-            <a href="#" class="register">Register</a>
+            <span class="separator">|</span>
+            <router-link to="/register">Register</router-link>
         </div>
 
         <label for="email" class="login-error" v-if="errors.email">{{ errors.email }}</label>
@@ -66,11 +66,18 @@
     .login-header {
         display: flex;
         align-items: center;
+        justify-content: center;
         color: white;
         font-weight: bold;
+        width: 50%;
+        max-width: 250px;
     }
 
     .login-error {
         color: red;
+    }
+
+    .separator {
+        margin: 5px;
     }
 </style>
