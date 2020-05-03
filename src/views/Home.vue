@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <img src="../assets/logo.png" alt="Vue logo">
+        <img id="logo" src="../assets/logo.png" alt="Vue logo">
         <Welcome msg="Bienvenid@ a Sudokers App"/>
     </div>
 </template>

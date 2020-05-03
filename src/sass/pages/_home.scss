@@ -1,0 +1,13 @@
+.home {
+  @include size($max-size,$max-size);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  text-align: center;
+
+  #logo {
+    @include size(200px,200px);
+  }
+}

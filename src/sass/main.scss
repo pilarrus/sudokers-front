@@ -1,8 +1,10 @@
-@import "base/reset";
 @import "utils/variables";
+@import "utils/mixins";
+@import "base/reset";
+
 @import "base/typography";
 @import "utils/helpers";
-@import "utils/mixins";
+
 @import "utils/functions";
 
 @import "layout/forms";

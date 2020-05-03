@@ -8,8 +8,14 @@
 
 html {
   font-size: 62.5%;
+  @include size($max-size,$max-size);
 }
 
 body {
   box-sizing: border-box;
+  @include size($max-size,$max-size);
+}
+
+#app {
+  @include size($max-size,$max-size);
 }
