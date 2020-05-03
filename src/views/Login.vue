@@ -3,13 +3,13 @@
         <div class="login-header">
             <p>Login</p>
             <span class="separator">|</span>
-            <router-link to="/register">Register</router-link>
+            <router-link to="/register" class="pointer">Register</router-link>
         </div>
 
-        <label for="email" class="login-error" v-if="errors.email">{{ errors.email }}</label>
+        <label for="email" class="error" v-if="errors.email">{{ errors.email }}</label>
         <input id="email" v-model="email" type="email" name="email" placeholder="Email">
 
-        <label for="password" class="login-error" v-if="errors.password">{{ errors.password }}</label>
+        <label for="password" class="error" v-if="errors.password">{{ errors.password }}</label>
         <input id="password" v-model="password" type="password" name="password" placeholder="Contraseña">
         <input type="submit" value="Enviar">
     </form>
@@ -44,9 +44,11 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss">
+    @import "../sass/main.scss";
+
     #login {
-        background: #42b983;
+        background: $color-secondary;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -71,13 +73,5 @@
         font-weight: bold;
         width: 50%;
         max-width: 250px;
-    }
-
-    .login-error {
-        color: red;
-    }
-
-    .separator {
-        margin: 5px;
     }
 </style>
