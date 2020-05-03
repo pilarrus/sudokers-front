@@ -69,7 +69,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        color: white;
+        color: $color-tertiary;
         font-weight: bold;
         width: 50%;
         max-width: 250px;
