@@ -45,33 +45,5 @@
 </script>
 
 <style lang="scss">
-    @import "../sass/main.scss";
 
-    #login {
-        background: $color-secondary;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-    }
-
-    #email {
-        width: 50%;
-        max-width: 250px;
-    }
-
-    #password {
-        width: 50%;
-        max-width: 250px
-    }
-
-    .login-header {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: $color-tertiary;
-        font-weight: bold;
-        width: 50%;
-        max-width: 250px;
-    }
 </style>
