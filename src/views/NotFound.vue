@@ -1,5 +1,8 @@
 <template>
-    <h1>La página no existe</h1>
+    <div id="errorPage">
+        <h1>La página no existe</h1>
+        <router-link to="/">Volver a Sudokers</router-link>
+    </div>
 </template>
 
 <script>
@@ -8,6 +11,6 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss">
 
 </style>
