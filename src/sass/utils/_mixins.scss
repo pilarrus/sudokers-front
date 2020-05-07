@@ -2,3 +2,13 @@
   width: $width;
   height: $height;
 }
+
+@mixin genericDisplay($width, $height){
+  @include size($width,$height);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem;
+}
