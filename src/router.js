@@ -5,6 +5,7 @@ import Login from "./views/Login.vue";
 import Register from "./views/Register.vue";
 import NotFound from "./views/NotFound";
 import Levels from "./views/Levels";
+import NewOrResume from "./views/NewOrResume";
 
 Vue.use(Router);
 
@@ -29,6 +30,11 @@ export default new Router({
       path: "/levels",
       name: "levels",
       component: Levels
+    },
+    {
+      path: "/newOrResume",
+      name: "newOrResume",
+      component: NewOrResume
     },
     {
       path: "*",
