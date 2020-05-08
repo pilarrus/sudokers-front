@@ -4,6 +4,7 @@ import Home from "./views/Home.vue";
 import Login from "./views/Login.vue";
 import Register from "./views/Register.vue";
 import NotFound from "./views/NotFound";
+import Levels from "./views/Levels";
 
 Vue.use(Router);
 
@@ -23,6 +24,11 @@ export default new Router({
       path: "/register",
       name: "register",
       component: Register
+    },
+    {
+      path: "/levels",
+      name: "levels",
+      component: Levels
     },
     {
       path: "*",
