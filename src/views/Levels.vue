@@ -1,16 +1,47 @@
 <template>
-    <form action="#" method="post" class="levels">
-        <h2>Elige un nivel</h2>
-        <button class="levels-easy pointer" name="level" value="easy">Fácil</button>
-        <button class="levels-medium pointer" name="level" value="medium">Medio</button>
-        <button class="levels-difficult pointer" name="level" value="difficult">Difícil</button>
-        <button class="levels-extreme pointer" name="level" value="extreme">Extremo</button>
-    </form>
+    <div class="levels">
+        <h2>Elige un nivel de dificultad</h2>
+        <ul>
+            <li v-for="level in levels" :key="level.text" v-on:click="actions(level)">
+                <Level v-bind:level="level.text" />
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script>
+  import Level from "../components/Level.vue";
+  import router from "../router";
+
   export default {
-    name: "Levels"
+    name: "Levels",
+    components: {
+      Level
+    },
+    data() {
+      return {
+        levels: [
+          { name: "easy", text: "Fácil" },
+          { name: "medium", text: "Medio" },
+          { name: "difficult", text: "Dificíl" },
+          { name: "easy", text: "Extremo" }
+        ],
+        levelChoice: null
+      }
+    },
+    methods: {
+      setLevel: function (levelChoice) {
+        this.levelChoice = levelChoice;
+        console.log("levelChoice: ", this.levelChoice);
+      },
+      redirect: function () {
+        router.push({ path: "/newOrResume" });
+      },
+      actions: function (levelChoice) {
+        this.setLevel(levelChoice);
+        this.redirect();
+      }
+    }
   }
 </script>
 

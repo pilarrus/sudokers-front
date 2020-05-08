@@ -32,7 +32,7 @@ export default new Router({
       component: Levels
     },
     {
-      path: "/newOrResume",
+      path: "/newOrResume/",
       name: "newOrResume",
       component: NewOrResume
     },
