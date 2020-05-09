@@ -16,7 +16,6 @@
     },
     created() {
       setTimeout(function () {
-        console.log('router: ', router);
         router.push({ path: "/login" });
       }, 3000);
     }

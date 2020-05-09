@@ -25,14 +25,12 @@
           { name: "medium", text: "Medio" },
           { name: "difficult", text: "Dificíl" },
           { name: "easy", text: "Extremo" }
-        ],
-        levelChoice: null
+        ]
       }
     },
     methods: {
       setLevel: function (levelChoice) {
-        this.levelChoice = levelChoice;
-        console.log("levelChoice: ", this.levelChoice);
+        this.$store.commit("setLevel", levelChoice);
       },
       redirect: function () {
         router.push({ path: "/newOrResume" });
