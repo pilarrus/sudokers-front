@@ -1,44 +1,92 @@
 <template>
-    <form id="login" @submit="checkForm" action="#" method="post">
+    <form id="login" @submit="actions" action="#" method="post">
         <div class="login-header">
             <p>Login</p>
             <span class="separator">|</span>
             <router-link to="/register" class="pointer">Register</router-link>
         </div>
 
-        <label for="email" class="error" v-if="errors.email">{{ errors.email }}</label>
+        <label for="email" class="error" v-if="errorEmail">{{ errorEmail }}</label>
         <input id="email" v-model="email" type="email" name="email" placeholder="Email">
 
-        <label for="password" class="error" v-if="errors.password">{{ errors.password }}</label>
+        <label for="password" class="error" v-if="errorPassword">{{ errorPassword }}</label>
         <input id="password" v-model="password" type="password" name="password" placeholder="Contraseña">
-        <input type="submit" value="Enviar">
+
+        <input type="submit" value="Enviar" v-if="!isLoading">
+        <Loading v-else />
     </form>
 </template>
 
 <script>
+  import mockFetch from "../utils/mockFetch";
+  import router from "../router";
+  import Loading from "../components/Loading";
+
   export default {
     name: "Login",
+    components: {
+      Loading
+    },
     data() {
       return {
-        errors: {},
+        isLoading: false,
+        errorEmail: null,
+        errorPassword: null,
         email: null,
         password: null
       }
     },
     methods: {
-      checkForm: function (e) {
-        if (this.email && this.password) {
-          return true;
-        }
-        this.errors = {};
+      loading: function (isLoading) {
+        this.isLoading = isLoading;
+      },
+      setUser: function (user) {
+        this.$store.commit('setUser', user);
+      },
+      redirect: function () {
+        router.push({ path: "/levels" });
+      },
+      cancelEvent: function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      },
+      checkForm: async function () {
+        this.errorEmail = null;
+        this.errorPassword = null;
 
         if (!this.email) {
-          this.errors['email'] = 'El email es obligatorio';
+          this.errorEmail = 'El email es obligatorio';
         }
         if (!this.password) {
-          this.errors['password'] = 'La contraseña es obligatoria';
+          this.errorPassword = 'La contraseña es obligatoria';
         }
-        e.preventDefault();
+
+        if (this.email && this.password) {
+          const users = await mockFetch("/users");
+          const user = users.find(user => user.email === this.email);
+
+          if (!user) {
+            this.errorEmail = 'Usuario no registrado';
+            this.loading(false);
+            return false;
+          }
+
+          if (user.password !== this.password) {
+            this.errorPassword = 'Contraseña incorrecta';
+            this.loading(false);
+            return false;
+          }
+
+          this.setUser(user);
+          this.redirect();
+        }
+
+        this.loading(false);
+      },
+      actions: function (e) {
+        this.cancelEvent(e);
+        this.loading(true);
+        this.checkForm();
       }
     }
   }
