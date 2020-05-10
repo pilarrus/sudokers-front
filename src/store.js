@@ -7,7 +7,7 @@ export default new Vuex.Store({
   state: {
     user: {},
     level: {},
-    action: "",
+    action: {},
     sudoku: {}
   },
   mutations: {
