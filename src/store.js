@@ -6,10 +6,12 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     user: {},
-    level: {}
+    level: {},
+    sudoku: {}
   },
   mutations: {
     setUser: (state, user) => (state.user = user),
-    setLevel: (state, levelChoise) => (state.level = levelChoise)
+    setLevel: (state, levelChoise) => (state.level = levelChoise),
+    setSudoku: (state, sudoku) => (state.sudoku = sudoku)
   }
 });
