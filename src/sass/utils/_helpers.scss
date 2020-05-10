@@ -9,3 +9,10 @@
 .separator {
   margin: 5px;
 }
+
+.horizontalSeparator {
+  width: 50%;
+  height: 5px;
+  background: $color-secondary;
+  border-radius: 5px;
+}

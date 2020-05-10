@@ -1,3 +1,6 @@
 .newOrResume {
   @include genericDisplay($max-size, $max-size);
+  & > * {
+    margin-bottom: 10px;
+  }
 }
