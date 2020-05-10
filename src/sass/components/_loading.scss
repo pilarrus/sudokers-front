@@ -1,0 +1,12 @@
+.loader {
+  @include size(55px,55px);
+  border: 9px solid $color-tertiary;
+  border-top: 9px solid $color-primary;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
