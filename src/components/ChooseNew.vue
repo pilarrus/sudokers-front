@@ -20,8 +20,6 @@
       generateSudoku: function () {
         const action = { key: "new", sudokuId: null };
         this.setAction(action);
-        console.log("Generar sudoku de nivel: ", this.$store.state.level.text);
-        console.log("store.state.action: ", this.$store.state.action);
         this.redirect();
       }
     }
