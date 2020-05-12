@@ -13,7 +13,7 @@
 
 <script>
   import Loading from "./Loading";
-  import router from "../router";
+  import { redirect } from "../utils/helpers";
 
   export default {
     name: "ChooseOpen",
@@ -29,13 +29,10 @@
       setAction: function (action) {
         this.$store.commit('setAction', action);
       },
-      redirect: function () {
-        router.push({ path: "/sudoku" });
-      },
       openSudoku: function (sudokuId) {
         const action = { key: "generate", sudokuId: sudokuId };
         this.setAction(action);
-        this.redirect();
+        redirect("/sudoku");
       }
     }
   }

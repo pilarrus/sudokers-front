@@ -8,8 +8,8 @@
 
 <script>
   import Welcome from "../components/Welcome.vue";
-  import router from "../router";
   import Loading from "../components/Loading";
+  import { redirect } from "../utils/helpers";
 
   export default {
     name: "Home",
@@ -19,7 +19,7 @@
     },
     created() {
       setTimeout(function () {
-        router.push({ path: "/login" });
+        redirect("/login");
       }, 3000);
     }
   }

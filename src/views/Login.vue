@@ -19,8 +19,8 @@
 
 <script>
   import mockFetch from "../utils/mockFetch";
-  import router from "../router";
   import Loading from "../components/Loading";
+  import { redirect } from "../utils/helpers";
 
   export default {
     name: "Login",
@@ -42,9 +42,6 @@
       },
       setUser: function (user) {
         this.$store.commit('setUser', user);
-      },
-      redirect: function () {
-        router.push({ path: "/levels" });
       },
       cancelEvent: function(e) {
         e.preventDefault();
@@ -78,7 +75,7 @@
           }
 
           this.setUser(user);
-          this.redirect();
+          redirect("/levels");
         }
 
         this.loading(false);

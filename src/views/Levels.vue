@@ -11,7 +11,7 @@
 
 <script>
   import Level from "../components/Level.vue";
-  import router from "../router";
+  import { redirect } from "../utils/helpers";
 
   export default {
     name: "Levels",
@@ -32,12 +32,9 @@
       setLevel: function (levelChoice) {
         this.$store.commit("setLevel", levelChoice);
       },
-      redirect: function () {
-        router.push({ path: "/newOrResume" });
-      },
       actions: function (levelChoice) {
         this.setLevel(levelChoice);
-        this.redirect();
+        redirect("/newOrResume");
       }
     }
   }

@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  import router from "../router";
+  import { redirect } from "../utils/helpers";
 
   export default {
     name: "ChooseNew",
@@ -14,13 +14,10 @@
       setAction: function (action) {
         this.$store.commit('setAction', action);
       },
-      redirect: function () {
-        router.push({ path: "/sudoku" });
-      },
       generateSudoku: function () {
         const action = { key: "new", sudokuId: null };
         this.setAction(action);
-        this.redirect();
+        redirect("/sudoku");
       }
     }
   }
