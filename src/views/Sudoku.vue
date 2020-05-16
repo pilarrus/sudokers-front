@@ -8,16 +8,25 @@
         <div class="sudoku-puzzle">
             Sudoku
         </div>
-        <div class="sudoku-bar-numbers">
-            <button v-for="n in 9" :key="n" v-on:click="setSelectedNumber(n)">{{n}}</button>
+
+        <div class="sudoku-numbers">
+            <div class="sudoku-numbers-container" v-for="n in 9" :key="n" v-on:click="setSelectedNumber(n)">
+                <ButtonNumber v-bind:number="n"/>
+            </div>
         </div>
+
         <div class="sudoku-bar-actions">Actions</div>
     </div>
 </template>
 
 <script>
+  import ButtonNumber from "../components/buttons/ButtonNumber"
+
   export default {
     name: "Sudoku",
+    components: {
+      ButtonNumber
+    },
     data() {
       return {
         selectedNumber: 0
