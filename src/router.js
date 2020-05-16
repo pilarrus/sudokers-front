@@ -6,6 +6,7 @@ import Register from "./views/Register.vue";
 import NotFound from "./views/NotFound";
 import Levels from "./views/Levels";
 import NewOrResume from "./views/NewOrResume";
+import Sudoku from "./views/Sudoku";
 
 Vue.use(Router);
 
@@ -35,6 +36,11 @@ export default new Router({
       path: "/newOrResume/",
       name: "newOrResume",
       component: NewOrResume
+    },
+    {
+      path: "/sudoku",
+      name: "sudoku",
+      component: Sudoku
     },
     {
       path: "*",

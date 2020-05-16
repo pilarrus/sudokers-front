@@ -1,0 +1,3 @@
+.sudoku {
+  @include genericDisplay($max-size,$max-size);
+}
