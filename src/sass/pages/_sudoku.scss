@@ -1,7 +1,20 @@
 .sudoku {
   @include genericDisplay($max-size,$max-size);
 
+  & > * {
+    margin-bottom: $margin-bottom-size;
+  }
+
   &-numbers {
+    display: flex;
+
+    &-container {
+      @include size(30px, 30px);
+      margin: 0 3px;
+    }
+  }
+
+  &-actions {
     display: flex;
 
     &-container {
