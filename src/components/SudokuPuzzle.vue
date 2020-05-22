@@ -3,7 +3,7 @@
         <div class="sudoku-puzzle-container">
             <div class="sudoku-puzzle-container-cell pointer" v-for="cell in cells"
                  :key="'divCell' + cell.position.row + cell.position.column"
-                 v-on:click="actionsCell(true, cell)">
+                 v-on:click="actionsCell(cell)">
 
                 <Cell v-if="cell.number > 0"
                       action="paint"
@@ -28,7 +28,8 @@
 </template>
 
 <script>
-    import Cell from "./Cell";
+  import Cell from "./Cell";
+
   export default {
     name: "SudokuPuzzle",
     components: {
@@ -45,50 +46,40 @@
       }
     },
     methods: {
-      compare: function (x, y) {
-        if (x < y) return -1;
-        else if (x > y) return 1;
-        return 0;
-      },
       setActiveCell: function (activeCell) {
         this.activeCell = activeCell;
       },
       paintAction: function (activeCell) {
-        this.cells.map(cell => {
-          if (cell.position.row === activeCell.position.row && cell.position.column === activeCell.position.column) {
-            cell.number = this.selectedNumber;
-          }
+        if (this.selectedNumber === 0) return;
+
+        this.cells.forEach(cell => {
+          if (cell.position.row !== activeCell.position.row || cell.position.column !== activeCell.position.column) return;
+          cell.number = this.selectedNumber;
         });
       },
       deleteAction: function (activeCell) {
-        this.cells.map(cell => {
-          if (cell.position.row === activeCell.position.row && cell.position.column === activeCell.position.column) {
-            cell.number = 0;
-            cell.grid = []
-          }
+        this.cells.forEach(cell => {
+          if (cell.position.row !== activeCell.position.row || cell.position.column !== activeCell.position.column) return;
+          cell.number = 0;
+          cell.grid = [];
         });
       },
       markAction: function (activeCell) {
-        this.cells.map(cell => {
-          if (cell.position.row === activeCell.position.row && cell.position.column === activeCell.position.column) {
-            if (cell.grid.length === 0) {
-              cell.grid.push(this.selectedNumber);
-            } else {
-              const index = cell.grid.findIndex(element => element === this.selectedNumber);
-              if (index < 0) {
-                cell.grid.push(this.selectedNumber);
-              } else {
-                cell.grid.splice(index, 1);
-              }
-              cell.grid.sort(this.compare);
-            }
+        if (this.selectedNumber === 0) return;
+
+        this.cells.forEach(cell => {
+          if (cell.position.row !== activeCell.position.row || cell.position.column !== activeCell.position.column) return;
+
+          const index = cell.grid.findIndex(element => element === this.selectedNumber);
+          if (index < 0) {
+            cell.grid.push(this.selectedNumber);
+          } else {
+            cell.grid.splice(index, 1);
           }
         });
       },
-      actionsCell: function (isOnClickCell, activeCell) {
+      actionsCell: function (activeCell) {
         this.setActiveCell(activeCell);
-
-        if (this.selectedNumber === 0) return;
 
         if (!activeCell.writable) return;
 
