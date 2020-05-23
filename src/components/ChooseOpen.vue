@@ -3,7 +3,7 @@
         <span>{{msg}}</span>
         <ul v-if="sudokus.length > 0">
             <li v-for="sudoku in sudokus" :key="sudoku._id">
-                <button v-on:click="openSudoku(sudoku._id)" class="pointer">{{sudoku.updatedAt}}</button>
+                <button v-on:click="actions(sudoku._id)" class="pointer">{{sudoku.updatedAt}}</button>
             </li>
         </ul>
         <Loading v-else-if="sudokus.length === 0 && isLoading"/>
@@ -13,7 +13,7 @@
 
 <script>
   import Loading from "./Loading";
-  import { redirect } from "../utils/helpers";
+  import {redirect} from "../utils/helpers";
 
   export default {
     name: "ChooseOpen",
@@ -29,9 +29,14 @@
       setAction: function (action) {
         this.$store.commit('setAction', action);
       },
-      openSudoku: function (sudokuId) {
-        const action = { key: "generate", sudokuId: sudokuId };
+      setSudoku: function (sudokuId) {
+        const sudoku = this.sudokus.find(sudoku => sudoku._id === sudokuId);
+        this.$store.commit('setSudoku', sudoku);
+      },
+      actions: function (sudokuId) {
+        const action = {key: "open", sudokuId: sudokuId};
         this.setAction(action);
+        this.setSudoku(sudokuId);
         redirect("/sudoku");
       }
     }
