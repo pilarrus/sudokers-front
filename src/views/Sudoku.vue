@@ -1,53 +1,45 @@
 <template>
     <div class="sudoku">
         <div class="sudoku-top">
-            <span class="sudoku-top-level">Nivel</span>
-            <span class="sudoku-top-time">Time</span>
+            <span class="sudoku-top-level">{{$store.state.level.text}}</span>
+            <Timer/>
         </div>
 
-        <div class="sudoku-puzzle">
-            Sudoku
-        </div>
+        <SudokuPuzzle :cells="cells" :selected-action="selectedAction" :selected-number="selectedNumber"/>
 
-        <div class="sudoku-numbers">
-            <div class="sudoku-numbers-container" v-for="n in 9" :key="n" v-on:click="setSelectedNumber(n)">
-                <ButtonNumber v-bind:number="n"/>
-            </div>
-        </div>
+        <NumberBar @send-selected-number="setSelectedNumber"/>
 
-        <div class="sudoku-actions">
-            <div class="sudoku-actions-container" v-for="action in actions" :key="action" v-on:click="setSelectedAction(action)">
-                <ButtonAction v-bind:action="action"/>
-            </div>
-        </div>
+        <ActionBar @send-selected-action="setSelectedAction"/>
     </div>
 </template>
 
 <script>
-  import ButtonNumber from "../components/buttons/ButtonNumber";
-  import ButtonAction from "../components/buttons/ButtonAction";
+  import Timer from "../components/Timer";
+  import SudokuPuzzle from "../components/SudokuPuzzle";
+  import NumberBar from "../components/NumberBar";
+  import ActionBar from "../components/ActionBar";
 
   export default {
     name: "Sudoku",
     components: {
-      ButtonNumber,
-      ButtonAction
+      Timer,
+      SudokuPuzzle,
+      NumberBar,
+      ActionBar
     },
     data() {
       return {
         selectedNumber: 0,
-        actions: ["A","B","C","D","E","F","G","H"],
-        selectedAction: ""
+        selectedAction: "",
+        cells: this.$store.state.sudoku.cells
       }
     },
     methods: {
       setSelectedNumber: function (number) {
         this.selectedNumber = number;
-        console.log("selectedNumber: ", this.selectedNumber);
       },
       setSelectedAction: function (action) {
         this.selectedAction = action;
-        console.log("selectedAction: ", this.selectedAction);
       }
     }
   }
