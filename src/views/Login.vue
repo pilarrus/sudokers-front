@@ -1,5 +1,5 @@
 <template>
-    <form id="login" @submit="actions" action="#" method="post">
+    <form id="login" class="login" @submit="actions" action="#" method="post">
         <div class="login-header">
             <p>Login</p>
             <span class="separator">|</span>
@@ -7,12 +7,12 @@
         </div>
 
         <label for="email" class="error" v-if="errorEmail">{{ errorEmail }}</label>
-        <input id="email" v-model="email" type="email" name="email" placeholder="Email">
+        <input id="email" class="input" v-model="email" type="email" name="email" placeholder="Email">
 
         <label for="password" class="error" v-if="errorPassword">{{ errorPassword }}</label>
-        <input id="password" v-model="password" type="password" name="password" placeholder="Contraseña">
+        <input id="password" class="input" v-model="password" type="password" name="password" placeholder="Contraseña">
 
-        <input type="submit" value="Enviar" v-if="!isLoading">
+        <input class="button button-submit" type="submit" value="Enviar" v-if="!isLoading">
         <Loading v-else />
     </form>
 </template>

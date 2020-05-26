@@ -7,6 +7,20 @@
     outline: none;
   }
 
+  &-submit {
+    width: 50%;
+    max-width: 250px;
+    height: 30px;
+    border: none;
+    background-color: $color-secondary;
+    color: white;
+    font-weight: bold;
+
+    &:hover {
+      background-color: $color-primary;
+    }
+  }
+
   &-number {
     @include size($max-size,$max-size);
     position: relative;
