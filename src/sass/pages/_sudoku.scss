@@ -12,7 +12,7 @@
   }
 
   &-puzzle {
-    @include size(100%, 50%);
+    //@include size(100%, 50%);
     display: flex;
     justify-content: center;
 
@@ -20,6 +20,7 @@
       display: grid;
       grid-template-columns: repeat(9,35px);
       grid-template-rows: repeat(9,35px);
+      border: 2px solid gray;
 
       &-cell {
         border: 1px solid gray;

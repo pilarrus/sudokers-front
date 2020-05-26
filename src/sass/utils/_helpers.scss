@@ -6,6 +6,10 @@
   cursor: pointer;
 }
 
+.active {
+  border: 2px solid $color-secondary;
+}
+
 .separator {
   margin: 5px;
 }

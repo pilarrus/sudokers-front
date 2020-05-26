@@ -3,7 +3,6 @@
 @import "base/reset";
 
 @import "base/typography";
-@import "utils/helpers";
 
 @import "utils/functions";
 
@@ -11,6 +10,7 @@
 
 @import "components/buttons";
 @import "components/cell";
+@import "components/icons";
 @import "components/loading";
 @import "components/chooseOpen";
 
@@ -21,3 +21,5 @@
 @import "pages/levels";
 @import "pages/newOrResume";
 @import "pages/sudoku";
+
+@import "utils/helpers";
