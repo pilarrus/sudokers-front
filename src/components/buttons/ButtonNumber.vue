@@ -1,5 +1,5 @@
 <template>
-    <button class="button button-number pointer" v-on:click="counter += 1" :disabled="counter >= 9">
+    <button class="button button-number pointer" :class="{active: isActive}" v-on:click="counter += 1" :disabled="counter >= 9">
         <span class="button-number-box">{{number}}</span>
         <span class="button-number-count">{{counter}}</span>
     </button>
@@ -9,7 +9,8 @@
   export default {
     name: "Number",
     props: {
-      number: Number
+      number: Number,
+      isActive: Boolean
     },
     data() {
       return {
