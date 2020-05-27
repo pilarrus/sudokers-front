@@ -1,16 +1,16 @@
 <template>
-    <form id="login" class="login" @submit="actions" action="#" method="post">
-        <div class="login-header">
+    <form id="login" class="form" @submit="actions" action="#" method="post">
+        <div class="form-header">
             <p>Login</p>
             <span class="separator">|</span>
             <router-link to="/register" class="pointer">Register</router-link>
         </div>
 
         <label for="email" class="error" v-if="errorEmail">{{ errorEmail }}</label>
-        <input id="email" class="input" v-model="email" type="email" name="email" placeholder="Email">
+        <input id="email" class="form-input" v-model="email" type="email" name="email" placeholder="Email">
 
         <label for="password" class="error" v-if="errorPassword">{{ errorPassword }}</label>
-        <input id="password" class="input" v-model="password" type="password" name="password" placeholder="Contraseña">
+        <input id="password" class="form-input" v-model="password" type="password" name="password" placeholder="Contraseña">
 
         <input class="button button-submit" type="submit" value="Enviar" v-if="!isLoading">
         <Loading v-else />

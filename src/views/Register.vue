@@ -1,20 +1,21 @@
 <template>
-    <form id="register" @submit="checkForm" action="#" method="post">
-        <div class="register-header">
+    <form id="register" class="form" @submit="checkForm" action="#" method="post">
+        <div class="form-header">
             <router-link to="/login">Login</router-link>
             <span class="separator">|</span>
             <p>Register</p>
         </div>
 
         <label for="username" class="error" v-if="errors.username">{{ errors.username }}</label>
-        <input id="username" v-model="text" type="text" name="username" placeholder="Username">
+        <input id="username" class="form-input" v-model="text" type="text" name="username" placeholder="Username">
 
         <label for="email" class="error" v-if="errors.email">{{ errors.email }}</label>
-        <input id="email" v-model="email" type="email" name="email" placeholder="Email">
+        <input id="email" class="form-input" v-model="email" type="email" name="email" placeholder="Email">
 
         <label for="password" class="error" v-if="errors.password">{{ errors.password }}</label>
-        <input id="password" v-model="password" type="password" name="password" placeholder="Contraseña">
-        <input type="submit" value="Enviar">
+        <input id="password" class="form-input" v-model="password" type="password" name="password" placeholder="Contraseña">
+
+        <input class="button button-submit" type="submit" value="Enviar">
     </form>
 </template>
 
