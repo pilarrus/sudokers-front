@@ -1,6 +1,10 @@
 .home {
   @include genericDisplay($max-size,$max-size);
 
+  & > * {
+    margin-bottom: $margin-bottom-size;
+  }
+
   #logo {
     @include size(200px,200px);
   }
