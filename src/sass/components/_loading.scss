@@ -1,6 +1,6 @@
 .loader {
   @include size(55px,55px);
-  border: 9px solid $color-tertiary;
+  border: 9px solid $color-secondary;
   border-top: 9px solid $color-primary;
   border-radius: 50%;
   animation: spin 2s linear infinite;
