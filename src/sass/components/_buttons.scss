@@ -13,7 +13,17 @@
     height: 30px;
     border: none;
     background-color: $color-secondary;
-    color: white;
+    color: $color-tertiary;
+    font-weight: bold;
+
+    &:hover {
+      background-color: $color-primary;
+    }
+  }
+
+  &-level {
+    background-color: $color-secondary;
+    color: $color-tertiary;
     font-weight: bold;
 
     &:hover {

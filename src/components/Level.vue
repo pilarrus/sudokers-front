@@ -1,5 +1,5 @@
 <template>
-    <div class="level pointer">{{ level }}</div>
+    <div class="level button button-level pointer">{{ level }}</div>
 </template>
 
 <script>
