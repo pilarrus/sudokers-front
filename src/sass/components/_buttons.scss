@@ -42,6 +42,17 @@
     }
   }
 
+  &-open {
+    background-color: $color-secondary;
+    color: $color-tertiary;
+    font-weight: bold;
+    padding: 5px;
+
+    &:hover {
+      background-color: $color-primary;
+    }
+  }
+
   &-number {
     @include size($max-size,$max-size);
     position: relative;

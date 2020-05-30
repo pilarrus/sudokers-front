@@ -3,7 +3,7 @@
         <span>{{msg}}</span>
         <ul v-if="sudokus.length > 0">
             <li v-for="sudoku in sudokus" :key="sudoku._id">
-                <button v-on:click="actions(sudoku._id)" class="pointer">
+                <button v-on:click="actions(sudoku._id)" class="button button-open pointer">
                     <DateTimeFormat :date-time="new Date(sudoku.updatedAt)" />
                 </button>
             </li>
