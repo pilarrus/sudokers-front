@@ -1,5 +1,5 @@
 <template>
-    <button v-on:click="actions" class="pointer">{{msg}}</button>
+    <button v-on:click="actions" class="button button-generate pointer">{{msg}}</button>
 </template>
 
 <script>
