@@ -1,7 +1,9 @@
 <template>
     <div class="sudoku-puzzle">
         <div class="sudoku-puzzle-container">
-            <div class="sudoku-puzzle-container-cell pointer" v-for="cell in cells"
+            <div class="sudoku-puzzle-container-cell pointer"
+                 v-for="cell in cells"
+                 :class="'sudoku-puzzle-container-cell-row' + cell.position.row + ' ' + 'sudoku-puzzle-container-cell-col' + cell.position.column"
                  :key="'divCell' + cell.position.row + cell.position.column"
                  v-on:click="actionsCell(cell)">
 
