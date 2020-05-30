@@ -11,6 +11,7 @@
     display: grid;
     grid-template-columns: repeat(3,calc(100%/3));
     grid-template-rows: repeat(3,calc(100%/3));
+    align-items: center;
 
     &-item {
       font-size: 10px;
