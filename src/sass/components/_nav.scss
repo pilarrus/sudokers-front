@@ -1,0 +1,28 @@
+.nav {
+  position: relative;
+  height: 40px;
+  background-color: $color-secondary;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+
+  &-title {
+    color: $color-tertiary;
+    font-weight: bold;
+  }
+
+  &-logo {
+    width: 25px;
+    height: 25px;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
