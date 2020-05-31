@@ -1,0 +1,24 @@
+.menu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 50%;
+  background-color: #dbd8d8;
+
+  ul {
+    width: 100%;
+
+    li {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding-right: 5px;
+      border-bottom: 1px solid $color-quaternary;
+      height: 40px;
+
+      span {
+        margin-right: 10px;
+      }
+    }
+  }
+}
