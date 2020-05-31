@@ -1,19 +1,17 @@
 <template>
     <div id="app">
-        <!--<div id="nav">
-            <router-link to="/">Home</router-link>
-            |
-            <router-link to="/login">Login</router-link>
-            |
-            <router-link to="/register">Register</router-link>
-        </div>-->
-        <router-view/>
+        <Nav />
+        <main>
+            <router-view/>
+        </main>
     </div>
 </template>
 
 <script>
+  import Nav from "./components/Nav";
   export default {
-    name: 'App'
+    name: 'App',
+    components: {Nav}
   }
 </script>
 
