@@ -4,10 +4,10 @@
             <img src="../assets/logo.png" alt="Logo" class="nav-logo"/>
             <span>udokers</span>
         </div>
-        <button v-on:click="setState">
+        <button v-on:click="setIsOpen">
             <FontAwesomeIcon icon="ellipsis-v"/>
         </button>
-        <Menu v-if="isOpen"/>
+        <Menu v-if="isOpen" @send-is-open="setIsOpen" />
     </nav>
 </template>
 
@@ -27,7 +27,7 @@
       }
     },
     methods: {
-      setState: function () {
+      setIsOpen: function () {
         this.isOpen = !this.isOpen;
         console.log("this.isOpen: ", this.isOpen);
       }
