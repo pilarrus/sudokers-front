@@ -14,16 +14,23 @@
                 </button>
             </li>
         </ul>
+        <Modal v-if="showModal" @close="showModal = false">
+            <Info/>
+        </Modal>
     </div>
 </template>
 
 <script>
   import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
   import {redirect} from "../utils/helpers";
+  import Modal from "./Modal";
+  import Info from "./Info";
 
   export default {
     name: "Menu",
     components: {
+      Info,
+      Modal,
       FontAwesomeIcon
     },
     data() {
@@ -38,6 +45,7 @@
       },
       logout: function () {
         this.$store.commit('setUser', {});
+        this.$emit('send-is-open', false);
         redirect('/');
       }
     }
