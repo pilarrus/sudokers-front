@@ -3,7 +3,7 @@
         <div class="sudoku-puzzle-container">
             <div class="sudoku-puzzle-container-cell pointer"
                  v-for="cell in cells"
-                 :class="'sudoku-puzzle-container-cell-row' + cell.position.row + ' ' + 'sudoku-puzzle-container-cell-col' + cell.position.column"
+                 :class="[!cell.writable ? 'sudoku-puzzle-container-cell-unwritable' : ''] + ' ' +'sudoku-puzzle-container-cell-row' + cell.position.row + ' ' + 'sudoku-puzzle-container-cell-col' + cell.position.column"
                  :key="'divCell' + cell.position.row + cell.position.column"
                  v-on:click="actionsCell(cell)">
 

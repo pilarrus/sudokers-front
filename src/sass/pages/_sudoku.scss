@@ -31,6 +31,10 @@
         &-col3, &-col6 {
           border-right: 2px solid $color-quaternary;
         }
+
+        &-unwritable {
+          background-color: rgba($color-secondary, 0.3);
+        }
       }
     }
   }
