@@ -2,13 +2,13 @@
     <div class="menu">
         <ul>
             <li>
-                <button @click="setShowModal">
+                <button class="menu-button" @click="setShowModal">
                     <span>Info</span>
                     <FontAwesomeIcon icon="info-circle"/>
                 </button>
             </li>
             <li v-if="Object.keys($store.state.user).length !== 0">
-                <button @click="logout">
+                <button class="menu-button" @click="logout">
                     <span>Cerrar sesión</span>
                     <FontAwesomeIcon icon="user-times"/>
                 </button>

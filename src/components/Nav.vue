@@ -4,7 +4,7 @@
             <img src="../assets/logo.png" alt="Logo" class="nav-logo"/>
             <span>udokers</span>
         </div>
-        <button v-on:click="setIsOpen">
+        <button class="nav-button button" v-on:click="setIsOpen">
             <FontAwesomeIcon icon="ellipsis-v"/>
         </button>
         <Menu v-if="isOpen" @send-is-open="setIsOpen" />

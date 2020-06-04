@@ -6,7 +6,7 @@
 
                     <slot></slot>
 
-                    <button class="button" @click="$emit('close')">OK</button>
+                    <button class="modal-button button" @click="$emit('close')">OK</button>
 
                 </div>
             </div>
