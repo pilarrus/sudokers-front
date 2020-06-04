@@ -39,8 +39,12 @@
       }
     },
     methods: {
-      setCloseModal: function () {
+      sleep: function(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      },
+      setCloseModal: async function () {
         this.showModal = false;
+        await this.sleep(300);
         this.$emit('send-is-open', false);
       },
       setShowModal: function () {
