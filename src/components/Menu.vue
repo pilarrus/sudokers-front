@@ -14,7 +14,7 @@
                 </button>
             </li>
         </ul>
-        <Modal v-if="showModal" @close="showModal = false">
+        <Modal v-if="showModal" @close="setCloseModal">
             <Info/>
         </Modal>
     </div>
@@ -39,9 +39,12 @@
       }
     },
     methods: {
+      setCloseModal: function () {
+        this.showModal = false;
+        this.$emit('send-is-open', false);
+      },
       setShowModal: function () {
         this.showModal = true;
-        console.log("this.showModal: ", this.showModal);
       },
       logout: function () {
         this.$store.commit('setUser', {});
