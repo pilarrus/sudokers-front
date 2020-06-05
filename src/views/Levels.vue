@@ -24,7 +24,7 @@
           { name: "easy", text: "Fácil" },
           { name: "medium", text: "Medio" },
           { name: "difficult", text: "Dificíl" },
-          { name: "easy", text: "Extremo" }
+          { name: "extreme", text: "Extremo" }
         ]
       }
     },
