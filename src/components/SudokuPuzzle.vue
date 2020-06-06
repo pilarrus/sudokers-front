@@ -56,7 +56,10 @@
 
         this.cells.forEach(cell => {
           if (cell.position.row !== activeCell.position.row || cell.position.column !== activeCell.position.column) return;
-          cell.number = this.selectedNumber;
+          console.log('isValidNumber: ', this.$store.state.sudoku.isValidNumber(this.selectedNumber, cell.position.row, cell.position.column));
+          if (this.$store.state.sudoku.isValidNumber(this.selectedNumber, cell.position.row, cell.position.column)) {
+            cell.number = this.selectedNumber;
+          }
         });
       },
       deleteAction: function (activeCell) {
@@ -92,6 +95,8 @@
         } else if (this.selectedAction === 'mark') {
           this.markAction(activeCell);
         }
+        console.log('cells: ', this.cells);
+        console.log('cells State: ', this.$store.state.sudoku.cells);
       }
     }
   }

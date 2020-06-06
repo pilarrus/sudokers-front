@@ -17,6 +17,7 @@
   import Loading from "./Loading";
   import DateTimeFormat from "./DateTimeFormat";
   import {redirect} from "../utils/helpers";
+  import Sudoku from "../lib/Sudoku/Sudoku.js"
 
   export default {
     name: "ChooseOpen",
@@ -34,7 +35,8 @@
         this.$store.commit('setAction', action);
       },
       setSudoku: function (sudokuId) {
-        const sudoku = this.sudokus.find(sudoku => sudoku._id === sudokuId);
+        const recoveredSudoku = this.sudokus.find(sudoku => sudoku._id === sudokuId);
+        const sudoku = new Sudoku(recoveredSudoku.difficulty, recoveredSudoku.cells, recoveredSudoku.seconds_accumulated);
         this.$store.commit('setSudoku', sudoku);
       },
       actions: function (sudokuId) {
