@@ -162,6 +162,15 @@ export default class Sudoku {
       this.cells[position].setWritable(true);
     });
   }
+
+  reset() {
+    this.cells.forEach(cell => {
+      if (cell.writable) {
+        cell.number = 0;
+        cell.grid = [];
+      }
+    });
+  }
 }
 
 const generateSudoku = difficulty => {

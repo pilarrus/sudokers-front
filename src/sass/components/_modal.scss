@@ -33,9 +33,25 @@
     }
   }
 
+  &-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    :not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+
   &-button {
+    @include size(35px, 35px);
     background-color: $color-secondary;
     padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-tertiary;
+    font-weight: bold;
   }
 
   &-enter {
