@@ -4,7 +4,16 @@ export default [
     cells: [
       {
         position: {
-          row: 1,
+          row: 0,
+          column: 0
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 0,
           column: 1
         },
         writable: true,
@@ -13,17 +22,8 @@ export default [
       },
       {
         position: {
-          row: 1,
+          row: 0,
           column: 2
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 1,
-          column: 3
         },
         writable: false,
         number: 6,
@@ -31,8 +31,8 @@ export default [
       },
       {
         position: {
-          row: 1,
-          column: 4
+          row: 0,
+          column: 3
         },
         writable: false,
         number: 7,
@@ -40,8 +40,8 @@ export default [
       },
       {
         position: {
-          row: 1,
-          column: 5
+          row: 0,
+          column: 4
         },
         writable: true,
         number: 0,
@@ -49,8 +49,8 @@ export default [
       },
       {
         position: {
-          row: 1,
-          column: 6
+          row: 0,
+          column: 5
         },
         writable: false,
         number: 8,
@@ -58,565 +58,7 @@ export default [
       },
       {
         position: {
-          row: 1,
-          column: 7
-        },
-        writable: false,
-        number: 1,
-        grid: []
-      },
-      {
-        position: {
-          row: 1,
-          column: 8
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 1,
-          column: 9
-        },
-        writable: false,
-        number: 4,
-        grid: []
-      },
-      {
-        position: {
-          row: 2,
-          column: 1
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 2,
-          column: 2
-        },
-        writable: false,
-        number: 7,
-        grid: []
-      },
-      {
-        position: {
-          row: 2,
-          column: 3
-        },
-        writable: false,
-        number: 4,
-        grid: []
-      },
-      {
-        position: {
-          row: 2,
-          column: 4
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 2,
-          column: 5
-        },
-        writable: false,
-        number: 5,
-        grid: []
-      },
-      {
-        position: {
-          row: 2,
-          column: 6
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 2,
-          column: 7
-        },
-        writable: false,
-        number: 2,
-        grid: []
-      },
-      {
-        position: {
-          row: 2,
-          column: 8
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 2,
-          column: 9
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 3,
-          column: 1
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 3,
-          column: 2
-        },
-        writable: false,
-        number: 1,
-        grid: []
-      },
-      {
-        position: {
-          row: 3,
-          column: 3
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 3,
-          column: 4
-        },
-        writable: false,
-        number: 2,
-        grid: []
-      },
-      {
-        position: {
-          row: 3,
-          column: 5
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 3,
-          column: 6
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 3,
-          column: 7
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 3,
-          column: 8
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 3,
-          column: 9
-        },
-        writable: false,
-        number: 6,
-        grid: []
-      },
-      {
-        position: {
-          row: 4,
-          column: 1
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 4,
-          column: 2
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 4,
-          column: 3
-        },
-        writable: false,
-        number: 2,
-        grid: []
-      },
-      {
-        position: {
-          row: 4,
-          column: 4
-        },
-        writable: false,
-        number: 8,
-        grid: []
-      },
-      {
-        position: {
-          row: 4,
-          column: 5
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 4,
-          column: 6
-        },
-        writable: false,
-        number: 9,
-        grid: []
-      },
-      {
-        position: {
-          row: 4,
-          column: 7
-        },
-        writable: false,
-        number: 7,
-        grid: []
-      },
-      {
-        position: {
-          row: 4,
-          column: 8
-        },
-        writable: false,
-        number: 4,
-        grid: []
-      },
-      {
-        position: {
-          row: 4,
-          column: 9
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 5,
-          column: 1
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 5,
-          column: 2
-        },
-        writable: false,
-        number: 4,
-        grid: []
-      },
-      {
-        position: {
-          row: 5,
-          column: 3
-        },
-        writable: false,
-        number: 8,
-        grid: []
-      },
-      {
-        position: {
-          row: 5,
-          column: 4
-        },
-        writable: false,
-        number: 6,
-        grid: []
-      },
-      {
-        position: {
-          row: 5,
-          column: 5
-        },
-        writable: false,
-        number: 3,
-        grid: []
-      },
-      {
-        position: {
-          row: 5,
-          column: 6
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 5,
-          column: 7
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 5,
-          column: 8
-        },
-        writable: false,
-        number: 9,
-        grid: []
-      },
-      {
-        position: {
-          row: 5,
-          column: 9
-        },
-        writable: false,
-        number: 2,
-        grid: []
-      },
-      {
-        position: {
-          row: 6,
-          column: 1
-        },
-        writable: false,
-        number: 3,
-        grid: []
-      },
-      {
-        position: {
-          row: 6,
-          column: 2
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 6,
-          column: 3
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 6,
-          column: 4
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 6,
-          column: 5
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 6,
-          column: 6
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 6,
-          column: 7
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 6,
-          column: 8
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 6,
-          column: 9
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 7,
-          column: 1
-        },
-        writable: false,
-        number: 7,
-        grid: []
-      },
-      {
-        position: {
-          row: 7,
-          column: 2
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 7,
-          column: 3
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 7,
-          column: 4
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 7,
-          column: 5
-        },
-        writable: false,
-        number: 6,
-        grid: []
-      },
-      {
-        position: {
-          row: 7,
-          column: 6
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 7,
-          column: 7
-        },
-        writable: false,
-        number: 3,
-        grid: []
-      },
-      {
-        position: {
-          row: 7,
-          column: 8
-        },
-        writable: false,
-        number: 8,
-        grid: []
-      },
-      {
-        position: {
-          row: 7,
-          column: 9
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 8,
-          column: 1
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 8,
-          column: 2
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 8,
-          column: 3
-        },
-        writable: false,
-        number: 9,
-        grid: []
-      },
-      {
-        position: {
-          row: 8,
-          column: 4
-        },
-        writable: false,
-        number: 3,
-        grid: []
-      },
-      {
-        position: {
-          row: 8,
-          column: 5
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 8,
+          row: 0,
           column: 6
         },
         writable: false,
@@ -625,7 +67,7 @@ export default [
       },
       {
         position: {
-          row: 8,
+          row: 0,
           column: 7
         },
         writable: true,
@@ -634,8 +76,17 @@ export default [
       },
       {
         position: {
-          row: 8,
+          row: 0,
           column: 8
+        },
+        writable: false,
+        number: 4,
+        grid: []
+      },
+      {
+        position: {
+          row: 1,
+          column: 0
         },
         writable: true,
         number: 0,
@@ -643,8 +94,8 @@ export default [
       },
       {
         position: {
-          row: 8,
-          column: 9
+          row: 1,
+          column: 1
         },
         writable: false,
         number: 7,
@@ -652,17 +103,17 @@ export default [
       },
       {
         position: {
-          row: 9,
-          column: 1
+          row: 1,
+          column: 2
         },
         writable: false,
-        number: 6,
+        number: 4,
         grid: []
       },
       {
         position: {
-          row: 9,
-          column: 2
+          row: 1,
+          column: 3
         },
         writable: true,
         number: 0,
@@ -670,16 +121,7 @@ export default [
       },
       {
         position: {
-          row: 9,
-          column: 3
-        },
-        writable: false,
-        number: 3,
-        grid: []
-      },
-      {
-        position: {
-          row: 9,
+          row: 1,
           column: 4
         },
         writable: false,
@@ -688,7 +130,7 @@ export default [
       },
       {
         position: {
-          row: 9,
+          row: 1,
           column: 5
         },
         writable: true,
@@ -697,16 +139,16 @@ export default [
       },
       {
         position: {
-          row: 9,
+          row: 1,
           column: 6
         },
-        writable: true,
-        number: 0,
+        writable: false,
+        number: 2,
         grid: []
       },
       {
         position: {
-          row: 9,
+          row: 1,
           column: 7
         },
         writable: true,
@@ -715,8 +157,26 @@ export default [
       },
       {
         position: {
-          row: 9,
+          row: 1,
           column: 8
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 2,
+          column: 0
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 2,
+          column: 1
         },
         writable: false,
         number: 1,
@@ -724,8 +184,548 @@ export default [
       },
       {
         position: {
-          row: 9,
-          column: 9
+          row: 2,
+          column: 2
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 2,
+          column: 3
+        },
+        writable: false,
+        number: 2,
+        grid: []
+      },
+      {
+        position: {
+          row: 2,
+          column: 4
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 2,
+          column: 5
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 2,
+          column: 6
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 2,
+          column: 7
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 2,
+          column: 8
+        },
+        writable: false,
+        number: 6,
+        grid: []
+      },
+      {
+        position: {
+          row: 3,
+          column: 0
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 3,
+          column: 1
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 3,
+          column: 2
+        },
+        writable: false,
+        number: 2,
+        grid: []
+      },
+      {
+        position: {
+          row: 3,
+          column: 3
+        },
+        writable: false,
+        number: 8,
+        grid: []
+      },
+      {
+        position: {
+          row: 3,
+          column: 4
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 3,
+          column: 5
+        },
+        writable: false,
+        number: 9,
+        grid: []
+      },
+      {
+        position: {
+          row: 3,
+          column: 6
+        },
+        writable: false,
+        number: 7,
+        grid: []
+      },
+      {
+        position: {
+          row: 3,
+          column: 7
+        },
+        writable: false,
+        number: 4,
+        grid: []
+      },
+      {
+        position: {
+          row: 3,
+          column: 8
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 4,
+          column: 0
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 4,
+          column: 1
+        },
+        writable: false,
+        number: 4,
+        grid: []
+      },
+      {
+        position: {
+          row: 4,
+          column: 2
+        },
+        writable: false,
+        number: 8,
+        grid: []
+      },
+      {
+        position: {
+          row: 4,
+          column: 3
+        },
+        writable: false,
+        number: 6,
+        grid: []
+      },
+      {
+        position: {
+          row: 4,
+          column: 4
+        },
+        writable: false,
+        number: 3,
+        grid: []
+      },
+      {
+        position: {
+          row: 4,
+          column: 5
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 4,
+          column: 6
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 4,
+          column: 7
+        },
+        writable: false,
+        number: 9,
+        grid: []
+      },
+      {
+        position: {
+          row: 4,
+          column: 8
+        },
+        writable: false,
+        number: 2,
+        grid: []
+      },
+      {
+        position: {
+          row: 5,
+          column: 0
+        },
+        writable: false,
+        number: 3,
+        grid: []
+      },
+      {
+        position: {
+          row: 5,
+          column: 1
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 5,
+          column: 2
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 5,
+          column: 3
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 5,
+          column: 4
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 5,
+          column: 5
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 5,
+          column: 6
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 5,
+          column: 7
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 5,
+          column: 8
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 6,
+          column: 0
+        },
+        writable: false,
+        number: 7,
+        grid: []
+      },
+      {
+        position: {
+          row: 6,
+          column: 1
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 6,
+          column: 2
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 6,
+          column: 3
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 6,
+          column: 4
+        },
+        writable: false,
+        number: 6,
+        grid: []
+      },
+      {
+        position: {
+          row: 6,
+          column: 5
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 6,
+          column: 6
+        },
+        writable: false,
+        number: 3,
+        grid: []
+      },
+      {
+        position: {
+          row: 6,
+          column: 7
+        },
+        writable: false,
+        number: 8,
+        grid: []
+      },
+      {
+        position: {
+          row: 6,
+          column: 8
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 7,
+          column: 0
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 7,
+          column: 1
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 7,
+          column: 2
+        },
+        writable: false,
+        number: 9,
+        grid: []
+      },
+      {
+        position: {
+          row: 7,
+          column: 3
+        },
+        writable: false,
+        number: 3,
+        grid: []
+      },
+      {
+        position: {
+          row: 7,
+          column: 4
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 7,
+          column: 5
+        },
+        writable: false,
+        number: 1,
+        grid: []
+      },
+      {
+        position: {
+          row: 7,
+          column: 6
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 7,
+          column: 7
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 7,
+          column: 8
+        },
+        writable: false,
+        number: 7,
+        grid: []
+      },
+      {
+        position: {
+          row: 8,
+          column: 0
+        },
+        writable: false,
+        number: 6,
+        grid: []
+      },
+      {
+        position: {
+          row: 8,
+          column: 1
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 8,
+          column: 2
+        },
+        writable: false,
+        number: 3,
+        grid: []
+      },
+      {
+        position: {
+          row: 8,
+          column: 3
+        },
+        writable: false,
+        number: 5,
+        grid: []
+      },
+      {
+        position: {
+          row: 8,
+          column: 4
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 8,
+          column: 5
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 8,
+          column: 6
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 8,
+          column: 7
+        },
+        writable: false,
+        number: 1,
+        grid: []
+      },
+      {
+        position: {
+          row: 8,
+          column: 8
         },
         writable: true,
         number: 0,
@@ -743,8 +743,8 @@ export default [
     cells: [
       {
         position: {
-          row: 1,
-          column: 1
+          row: 0,
+          column: 0
         },
         writable: true,
         number: 0,
@@ -752,8 +752,8 @@ export default [
       },
       {
         position: {
-          row: 1,
-          column: 2
+          row: 0,
+          column: 1
         },
         writable: false,
         number: 7,
@@ -761,8 +761,8 @@ export default [
       },
       {
         position: {
-          row: 1,
-          column: 3
+          row: 0,
+          column: 2
         },
         writable: true,
         number: 0,
@@ -770,8 +770,8 @@ export default [
       },
       {
         position: {
-          row: 1,
-          column: 4
+          row: 0,
+          column: 3
         },
         writable: false,
         number: 1,
@@ -779,7 +779,16 @@ export default [
       },
       {
         position: {
-          row: 1,
+          row: 0,
+          column: 4
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 0,
           column: 5
         },
         writable: true,
@@ -788,17 +797,8 @@ export default [
       },
       {
         position: {
-          row: 1,
+          row: 0,
           column: 6
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 1,
-          column: 7
         },
         writable: true,
         number: 0,
@@ -806,8 +806,8 @@ export default [
       },
       {
         position: {
-          row: 1,
-          column: 8
+          row: 0,
+          column: 7
         },
         writable: true,
         number: 0,
@@ -815,8 +815,8 @@ export default [
       },
       {
         position: {
-          row: 1,
-          column: 9
+          row: 0,
+          column: 8
         },
         writable: false,
         number: 6,
@@ -824,8 +824,8 @@ export default [
       },
       {
         position: {
-          row: 2,
-          column: 1
+          row: 1,
+          column: 0
         },
         writable: false,
         number: 2,
@@ -833,8 +833,8 @@ export default [
       },
       {
         position: {
-          row: 2,
-          column: 2
+          row: 1,
+          column: 1
         },
         writable: false,
         number: 6,
@@ -842,8 +842,8 @@ export default [
       },
       {
         position: {
-          row: 2,
-          column: 3
+          row: 1,
+          column: 2
         },
         writable: true,
         number: 0,
@@ -851,8 +851,8 @@ export default [
       },
       {
         position: {
-          row: 2,
-          column: 4
+          row: 1,
+          column: 3
         },
         writable: true,
         number: 0,
@@ -860,8 +860,8 @@ export default [
       },
       {
         position: {
-          row: 2,
-          column: 5
+          row: 1,
+          column: 4
         },
         writable: true,
         number: 0,
@@ -869,8 +869,8 @@ export default [
       },
       {
         position: {
-          row: 2,
-          column: 6
+          row: 1,
+          column: 5
         },
         writable: false,
         number: 5,
@@ -878,8 +878,8 @@ export default [
       },
       {
         position: {
-          row: 2,
-          column: 7
+          row: 1,
+          column: 6
         },
         writable: true,
         number: 0,
@@ -887,7 +887,16 @@ export default [
       },
       {
         position: {
-          row: 2,
+          row: 1,
+          column: 7
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 1,
           column: 8
         },
         writable: true,
@@ -897,16 +906,7 @@ export default [
       {
         position: {
           row: 2,
-          column: 9
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 3,
-          column: 1
+          column: 0
         },
         writable: true,
         number: 0,
@@ -914,7 +914,16 @@ export default [
       },
       {
         position: {
-          row: 3,
+          row: 2,
+          column: 1
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 2,
           column: 2
         },
         writable: true,
@@ -923,17 +932,8 @@ export default [
       },
       {
         position: {
-          row: 3,
+          row: 2,
           column: 3
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 3,
-          column: 4
         },
         writable: true,
         number: 0,
@@ -941,7 +941,16 @@ export default [
       },
       {
         position: {
-          row: 3,
+          row: 2,
+          column: 4
+        },
+        writable: true,
+        number: 0,
+        grid: [6]
+      },
+      {
+        position: {
+          row: 2,
           column: 5
         },
         writable: true,
@@ -950,17 +959,8 @@ export default [
       },
       {
         position: {
-          row: 3,
+          row: 2,
           column: 6
-        },
-        writable: true,
-        number: 0,
-        grid: [6]
-      },
-      {
-        position: {
-          row: 3,
-          column: 7
         },
         writable: false,
         number: 3,
@@ -968,8 +968,62 @@ export default [
       },
       {
         position: {
-          row: 3,
+          row: 2,
+          column: 7
+        },
+        writable: false,
+        number: 4,
+        grid: []
+      },
+      {
+        position: {
+          row: 2,
           column: 8
+        },
+        writable: true,
+        number: 0,
+        grid: [2]
+      },
+      {
+        position: {
+          row: 3,
+          column: 0
+        },
+        writable: false,
+        number: 7,
+        grid: []
+      },
+      {
+        position: {
+          row: 3,
+          column: 1
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 3,
+          column: 2
+        },
+        writable: false,
+        number: 6,
+        grid: []
+      },
+      {
+        position: {
+          row: 3,
+          column: 3
+        },
+        writable: true,
+        number: 0,
+        grid: [2]
+      },
+      {
+        position: {
+          row: 3,
+          column: 4
         },
         writable: false,
         number: 4,
@@ -978,70 +1032,16 @@ export default [
       {
         position: {
           row: 3,
-          column: 9
-        },
-        writable: true,
-        number: 0,
-        grid: [2]
-      },
-      {
-        position: {
-          row: 4,
-          column: 1
-        },
-        writable: false,
-        number: 7,
-        grid: []
-      },
-      {
-        position: {
-          row: 4,
-          column: 2
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 4,
-          column: 3
-        },
-        writable: false,
-        number: 6,
-        grid: []
-      },
-      {
-        position: {
-          row: 4,
-          column: 4
-        },
-        writable: true,
-        number: 0,
-        grid: [2]
-      },
-      {
-        position: {
-          row: 4,
           column: 5
         },
-        writable: false,
-        number: 4,
-        grid: []
-      },
-      {
-        position: {
-          row: 4,
-          column: 6
-        },
         writable: true,
         number: 0,
         grid: [2]
       },
       {
         position: {
-          row: 4,
-          column: 7
+          row: 3,
+          column: 6
         },
         writable: false,
         number: 9,
@@ -1049,8 +1049,8 @@ export default [
       },
       {
         position: {
-          row: 4,
-          column: 8
+          row: 3,
+          column: 7
         },
         writable: true,
         number: 0,
@@ -1058,8 +1058,8 @@ export default [
       },
       {
         position: {
-          row: 4,
-          column: 9
+          row: 3,
+          column: 8
         },
         writable: true,
         number: 0,
@@ -1067,8 +1067,8 @@ export default [
       },
       {
         position: {
-          row: 5,
-          column: 1
+          row: 4,
+          column: 0
         },
         writable: false,
         number: 9,
@@ -1076,8 +1076,8 @@ export default [
       },
       {
         position: {
-          row: 5,
-          column: 2
+          row: 4,
+          column: 1
         },
         writable: false,
         number: 5,
@@ -1085,7 +1085,16 @@ export default [
       },
       {
         position: {
-          row: 5,
+          row: 4,
+          column: 2
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 4,
           column: 3
         },
         writable: true,
@@ -1094,16 +1103,16 @@ export default [
       },
       {
         position: {
-          row: 5,
+          row: 4,
           column: 4
         },
         writable: true,
         number: 0,
-        grid: []
+        grid: [6]
       },
       {
         position: {
-          row: 5,
+          row: 4,
           column: 5
         },
         writable: true,
@@ -1112,17 +1121,8 @@ export default [
       },
       {
         position: {
-          row: 5,
+          row: 4,
           column: 6
-        },
-        writable: true,
-        number: 0,
-        grid: [6]
-      },
-      {
-        position: {
-          row: 5,
-          column: 7
         },
         writable: true,
         number: 0,
@@ -1130,8 +1130,8 @@ export default [
       },
       {
         position: {
-          row: 5,
-          column: 8
+          row: 4,
+          column: 7
         },
         writable: false,
         number: 2,
@@ -1139,8 +1139,8 @@ export default [
       },
       {
         position: {
-          row: 5,
-          column: 9
+          row: 4,
+          column: 8
         },
         writable: false,
         number: 8,
@@ -1148,7 +1148,16 @@ export default [
       },
       {
         position: {
-          row: 6,
+          row: 5,
+          column: 0
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 5,
           column: 1
         },
         writable: true,
@@ -1157,17 +1166,8 @@ export default [
       },
       {
         position: {
-          row: 6,
+          row: 5,
           column: 2
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 6,
-          column: 3
         },
         writable: false,
         number: 2,
@@ -1175,8 +1175,8 @@ export default [
       },
       {
         position: {
-          row: 6,
-          column: 4
+          row: 5,
+          column: 3
         },
         writable: true,
         number: 0,
@@ -1184,8 +1184,8 @@ export default [
       },
       {
         position: {
-          row: 6,
-          column: 5
+          row: 5,
+          column: 4
         },
         writable: false,
         number: 9,
@@ -1193,79 +1193,7 @@ export default [
       },
       {
         position: {
-          row: 6,
-          column: 6
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 6,
-          column: 7
-        },
-        writable: false,
-        number: 6,
-        grid: []
-      },
-      {
-        position: {
-          row: 6,
-          column: 8
-        },
-        writable: true,
-        number: 0,
-        grid: [3]
-      },
-      {
-        position: {
-          row: 6,
-          column: 9
-        },
-        writable: false,
-        number: 7,
-        grid: []
-      },
-      {
-        position: {
-          row: 7,
-          column: 1
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 7,
-          column: 2
-        },
-        writable: false,
-        number: 8,
-        grid: []
-      },
-      {
-        position: {
-          row: 7,
-          column: 3
-        },
-        writable: false,
-        number: 5,
-        grid: []
-      },
-      {
-        position: {
-          row: 7,
-          column: 4
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 7,
+          row: 5,
           column: 5
         },
         writable: true,
@@ -1274,7 +1202,88 @@ export default [
       },
       {
         position: {
-          row: 7,
+          row: 5,
+          column: 6
+        },
+        writable: false,
+        number: 6,
+        grid: []
+      },
+      {
+        position: {
+          row: 5,
+          column: 7
+        },
+        writable: true,
+        number: 0,
+        grid: [3]
+      },
+      {
+        position: {
+          row: 5,
+          column: 8
+        },
+        writable: false,
+        number: 7,
+        grid: []
+      },
+      {
+        position: {
+          row: 6,
+          column: 0
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 6,
+          column: 1
+        },
+        writable: false,
+        number: 8,
+        grid: []
+      },
+      {
+        position: {
+          row: 6,
+          column: 2
+        },
+        writable: false,
+        number: 5,
+        grid: []
+      },
+      {
+        position: {
+          row: 6,
+          column: 3
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 6,
+          column: 4
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 6,
+          column: 5
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 6,
           column: 6
         },
         writable: true,
@@ -1283,16 +1292,16 @@ export default [
       },
       {
         position: {
-          row: 7,
+          row: 6,
           column: 7
         },
         writable: true,
         number: 0,
-        grid: []
+        grid: [9]
       },
       {
         position: {
-          row: 7,
+          row: 6,
           column: 8
         },
         writable: true,
@@ -1302,16 +1311,7 @@ export default [
       {
         position: {
           row: 7,
-          column: 9
-        },
-        writable: true,
-        number: 0,
-        grid: [9]
-      },
-      {
-        position: {
-          row: 8,
-          column: 1
+          column: 0
         },
         writable: true,
         number: 0,
@@ -1319,8 +1319,8 @@ export default [
       },
       {
         position: {
-          row: 8,
-          column: 2
+          row: 7,
+          column: 1
         },
         writable: true,
         number: 0,
@@ -1328,8 +1328,8 @@ export default [
       },
       {
         position: {
-          row: 8,
-          column: 3
+          row: 7,
+          column: 2
         },
         writable: true,
         number: 0,
@@ -1337,8 +1337,8 @@ export default [
       },
       {
         position: {
-          row: 8,
-          column: 4
+          row: 7,
+          column: 3
         },
         writable: false,
         number: 6,
@@ -1346,7 +1346,16 @@ export default [
       },
       {
         position: {
-          row: 8,
+          row: 7,
+          column: 4
+        },
+        writable: true,
+        number: 0,
+        grid: [8]
+      },
+      {
+        position: {
+          row: 7,
           column: 5
         },
         writable: true,
@@ -1355,17 +1364,8 @@ export default [
       },
       {
         position: {
-          row: 8,
+          row: 7,
           column: 6
-        },
-        writable: true,
-        number: 0,
-        grid: [8]
-      },
-      {
-        position: {
-          row: 8,
-          column: 7
         },
         writable: true,
         number: 0,
@@ -1373,8 +1373,8 @@ export default [
       },
       {
         position: {
-          row: 8,
-          column: 8
+          row: 7,
+          column: 7
         },
         writable: false,
         number: 7,
@@ -1382,8 +1382,8 @@ export default [
       },
       {
         position: {
-          row: 8,
-          column: 9
+          row: 7,
+          column: 8
         },
         writable: false,
         number: 3,
@@ -1391,8 +1391,8 @@ export default [
       },
       {
         position: {
-          row: 9,
-          column: 1
+          row: 8,
+          column: 0
         },
         writable: false,
         number: 6,
@@ -1400,8 +1400,8 @@ export default [
       },
       {
         position: {
-          row: 9,
-          column: 2
+          row: 8,
+          column: 1
         },
         writable: true,
         number: 0,
@@ -1409,7 +1409,16 @@ export default [
       },
       {
         position: {
-          row: 9,
+          row: 8,
+          column: 2
+        },
+        writable: true,
+        number: 0,
+        grid: []
+      },
+      {
+        position: {
+          row: 8,
           column: 3
         },
         writable: true,
@@ -1418,7 +1427,7 @@ export default [
       },
       {
         position: {
-          row: 9,
+          row: 8,
           column: 4
         },
         writable: true,
@@ -1427,17 +1436,8 @@ export default [
       },
       {
         position: {
-          row: 9,
+          row: 8,
           column: 5
-        },
-        writable: true,
-        number: 0,
-        grid: []
-      },
-      {
-        position: {
-          row: 9,
-          column: 6
         },
         writable: false,
         number: 9,
@@ -1445,8 +1445,8 @@ export default [
       },
       {
         position: {
-          row: 9,
-          column: 7
+          row: 8,
+          column: 6
         },
         writable: true,
         number: 0,
@@ -1454,8 +1454,8 @@ export default [
       },
       {
         position: {
-          row: 9,
-          column: 8
+          row: 8,
+          column: 7
         },
         writable: false,
         number: 8,
@@ -1463,8 +1463,8 @@ export default [
       },
       {
         position: {
-          row: 9,
-          column: 9
+          row: 8,
+          column: 8
         },
         writable: true,
         number: 0,
