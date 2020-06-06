@@ -21,6 +21,13 @@
                     <FontAwesomeIcon icon="undo"/>
                 </button>
             </li>
+
+            <li v-if="$route.name === 'sudoku'">
+                <button class="menu-button" @click="showModalResolve = true">
+                    <span>Finalizar sudoku</span>
+                    <FontAwesomeIcon icon="redo"/>
+                </button>
+            </li>
         </ul>
 
         <Modal v-if="showModalInfo">
@@ -33,6 +40,14 @@
             <div class="modal-buttons">
                 <button class="modal-button button" @click="setCloseModalReset(true)">Si</button>
                 <button class="modal-button button" @click="setCloseModalReset(false)">No</button>
+            </div>
+        </Modal>
+
+        <Modal v-if="showModalResolve">
+            <p>¿Seguro que quieres finalizar el sudoku?</p>
+            <div class="modal-buttons">
+                <button class="modal-button button" @click="setCloseModalResolve(true)">Si</button>
+                <button class="modal-button button" @click="setCloseModalResolve(false)">No</button>
             </div>
         </Modal>
     </div>
@@ -54,7 +69,8 @@
     data() {
       return {
         showModalInfo: false,
-        showModalReset: false
+        showModalReset: false,
+        showModalResolve: false
       }
     },
     methods: {
@@ -74,6 +90,14 @@
         await this.sleep(300);
         this.$emit('send-is-open', false);
       },
+      setCloseModalResolve: async function (response) {
+        if (response) {
+          this.resolveSudoku();
+        }
+        this.showModalResolve = false;
+        await this.sleep(300);
+        this.$emit('send-is-open', false);
+      },
       logout: function () {
         this.$store.commit('setUser', {});
         this.$emit('send-is-open', false);
@@ -81,6 +105,10 @@
       },
       resetSudoku: function () {
         this.$store.state.sudoku.reset();
+      },
+      resolveSudoku: function () {
+        this.$store.state.sudoku.reset();
+        this.$store.state.sudoku.resolve();
       }
     }
   }

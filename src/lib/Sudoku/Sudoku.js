@@ -35,13 +35,13 @@ export default class Sudoku {
       let possibleNumbers = this.generatePosibleNumbers();
       for (let possibleNumber of possibleNumbers) {
         if (this.isValidNumber(possibleNumber, row, column)) {
-          cell.setNumber(possibleNumber);
+          cell.number = possibleNumber;
           if (this.resolve(nextRow, nextColumn)) {
             return 1;
           }
         }
       }
-      cell.setNumber(0);
+      cell.number = 0;
       return 0;
     }
   }

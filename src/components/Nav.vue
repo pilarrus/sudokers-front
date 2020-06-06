@@ -29,7 +29,6 @@
     methods: {
       setIsOpen: function () {
         this.isOpen = !this.isOpen;
-        console.log("this.isOpen: ", this.isOpen);
       }
     }
   }
