@@ -37,6 +37,11 @@
       setSudoku: function (sudokuId) {
         const recoveredSudoku = this.sudokus.find(sudoku => sudoku._id === sudokuId);
         const sudoku = new Sudoku(recoveredSudoku.difficulty, recoveredSudoku.cells, recoveredSudoku.seconds_accumulated);
+        // Borrar estas 4 líneas de abajo al obtener el sudoku de la api
+        sudoku._id = "5e9c3a6f50d80701823e56fd";
+        sudoku.user = "5e9b2d18b656c00044b00bda";
+        sudoku.createdAt = "2020-04-19T11:47:59.099+00:00";
+        sudoku.updatedAt = "2020-04-19T11:47:59.099+00:00";
         this.$store.commit('setSudoku', sudoku);
       },
       actions: function (sudokuId) {
