@@ -3,7 +3,9 @@
 </template>
 
 <script>
-  export default {
+    import {getSecondsAccumulated, getMinutesAccumulated} from "../utils/helpers";
+
+    export default {
     name: "Timer",
     data() {
       return {
@@ -15,25 +17,15 @@
       }
     },
     methods: {
-      setSeconds: function (secondsAccumulated) {
-        let seconds = parseInt(secondsAccumulated % 60);
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-        return seconds;
-      },
-      setMinutes: function (secondsAccumulated) {
-        let minutes = parseInt(secondsAccumulated / 60);
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        return minutes;
-      },
       setInitialTimer: function (secondsAccumulated) {
-        return this.setMinutes(secondsAccumulated) + ':' + this.setSeconds(secondsAccumulated);
+        return getMinutesAccumulated(secondsAccumulated) + ':' + getSecondsAccumulated(secondsAccumulated);
       },
       setTimer: function (minutes, seconds) {
         this.timer = minutes + ':' + seconds;
       },
       formatTimer: function () {
-        let seconds = this.setSeconds(this.secondsAccumulated);
-        let minutes = this.setMinutes(this.secondsAccumulated);
+        let seconds = getSecondsAccumulated(this.secondsAccumulated);
+        let minutes = getMinutesAccumulated(this.secondsAccumulated);
         this.setTimer(minutes, seconds);
       },
       startTimer: function () {

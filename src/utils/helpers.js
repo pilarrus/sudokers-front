@@ -2,4 +2,60 @@ import router from "../router";
 
 const redirect = url => router.push({ path: url });
 
-export { redirect };
+const getSecondsAccumulated = secondsAccumulated => {
+  let seconds = parseInt(secondsAccumulated % 60);
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+  return seconds;
+};
+
+const getMinutesAccumulated = secondsAccumulated => {
+  let minutes = parseInt(secondsAccumulated / 60);
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  return minutes;
+};
+
+const getDay = dateTime => {
+  return dateTime.getDate() < 10
+    ? "0" + dateTime.getDate()
+    : dateTime.getDate();
+};
+
+const getMonth = dateTime => {
+  return dateTime.getMonth() < 10
+    ? "0" + dateTime.getMonth()
+    : dateTime.getMonth();
+};
+
+const getYear = dateTime => {
+  return dateTime.getFullYear();
+};
+
+const getHour = dateTime => {
+  return dateTime.getHours() < 10
+    ? "0" + dateTime.getHours()
+    : dateTime.getHours();
+};
+
+const getMinutes = dateTime => {
+  return dateTime.getMinutes() < 10
+    ? "0" + dateTime.getMinutes()
+    : dateTime.getMinutes();
+};
+
+const getSeconds = dateTime => {
+  return dateTime.getSeconds() < 10
+    ? "0" + dateTime.getSeconds()
+    : dateTime.getSeconds();
+};
+
+export {
+  redirect,
+  getSecondsAccumulated,
+  getMinutesAccumulated,
+  getDay,
+  getMonth,
+  getYear,
+  getHour,
+  getMinutes,
+  getSeconds
+};
