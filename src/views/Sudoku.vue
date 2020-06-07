@@ -10,6 +10,10 @@
         <NumberBar @send-selected-number="setSelectedNumber"/>
 
         <ActionBar @send-selected-action="setSelectedAction"/>
+
+        <Modal v-if="$store.state.isOver">
+            <Ranking @close="closeModalRanking"/>
+        </Modal>
     </div>
 </template>
 
@@ -18,6 +22,9 @@
   import SudokuPuzzle from "../components/SudokuPuzzle";
   import NumberBar from "../components/NumberBar";
   import ActionBar from "../components/ActionBar";
+  import Modal from "../components/Modal";
+  import Ranking from "../components/Ranking";
+  import {redirect} from "../utils/helpers";
 
   export default {
     name: "Sudoku",
@@ -25,7 +32,9 @@
       Timer,
       SudokuPuzzle,
       NumberBar,
-      ActionBar
+      ActionBar,
+      Modal,
+      Ranking
     },
     data() {
       return {
@@ -40,6 +49,9 @@
       },
       setSelectedAction: function (action) {
         this.selectedAction = action;
+      },
+      closeModalRanking: function () {
+        redirect('/levels');
       }
     }
   }

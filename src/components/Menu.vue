@@ -99,7 +99,7 @@
         this.$emit('send-is-open', false);
       },
       logout: function () {
-        this.$store.commit('setUser', {});
+        this.resetState();
         this.$emit('send-is-open', false);
         redirect('/');
       },
@@ -109,7 +109,19 @@
       resolveSudoku: function () {
         this.$store.state.sudoku.reset();
         this.$store.state.sudoku.resolve();
-      }
+        this.setIsOver(true);
+      },
+      setIsOver: function (isOver) {
+        this.$store.commit("setIsOver", isOver);
+      },
+      resetState: function () {
+        this.$store.commit('setUser', {});
+        this.$store.commit('setLevel', {});
+        this.$store.commit('setAction', {});
+        this.$store.commit('setSudoku', {});
+        this.$store.commit('setIsOver', false);
+        this.$store.commit('setResult', {});
+      },
     }
   }
 </script>

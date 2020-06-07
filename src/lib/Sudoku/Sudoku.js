@@ -171,6 +171,15 @@ export default class Sudoku {
       }
     });
   }
+
+  isOver() {
+    for (let cell of this.cells) {
+      if (cell.number === 0) {
+        return false;
+      }
+    }
+    return true;
+  }
 }
 
 const generateSudoku = difficulty => {

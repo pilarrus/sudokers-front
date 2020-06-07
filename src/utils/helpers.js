@@ -48,6 +48,20 @@ const getSeconds = dateTime => {
     : dateTime.getSeconds();
 };
 
+const setDate = updatedDate => {
+  const date = new Date(updatedDate);
+  const day = getDay(date);
+  const month = getMonth(date);
+  const year = getYear(date);
+  return day + "/" + month + "/" + year;
+};
+
+const setTimer = secondsAccumulated => {
+  const seconds = getSecondsAccumulated(secondsAccumulated);
+  const minutes = getMinutesAccumulated(secondsAccumulated);
+  return minutes + ":" + seconds;
+};
+
 export {
   redirect,
   getSecondsAccumulated,
@@ -57,5 +71,7 @@ export {
   getYear,
   getHour,
   getMinutes,
-  getSeconds
+  getSeconds,
+  setDate,
+  setTimer
 };

@@ -1,8 +1,8 @@
 <template>
     <div class="ranking">
         <h3 class="ranking-title">Mejores resultados</h3>
-        <Loading v-if="bestResults.length === 0 && Object.keys(currentResult).length === 0" />
-        <div class="ranking-container">
+        <Loading v-if="bestResults.length === 0" />
+        <div v-else class="ranking-container">
             <ul class="ranking-container-results">
                 <li v-for="result in bestResults" :key="result.level" class="ranking-container-results-result">
                     <span>{{result.level}}</span>
@@ -10,20 +10,19 @@
                     <span>{{result.timer}}</span>
                 </li>
             </ul>
-            <div class="horizontalSeparator"/>
-            <div class="ranking-container-result">
+            <div v-if="Object.keys(currentResult).length !== 0" class="horizontalSeparator"/>
+            <div v-if="Object.keys(currentResult).length !== 0" class="ranking-container-result">
                 <span>{{currentResult.level}}</span>
                 <span>{{currentResult.date}}</span>
                 <span>{{currentResult.timer}}</span>
             </div>
         </div>
-        <button class="modal-button button" @click="$emit('close')">OK</button>
+        <button class="modal-button button" @click="takeActions">OK</button>
     </div>
 </template>
 
 <script>
   import mockFetch from "../utils/mockFetch";
-  import {getSecondsAccumulated, getMinutesAccumulated, getDay, getMonth, getYear} from "../utils/helpers";
   import Loading from "./Loading";
 
   export default {
@@ -34,36 +33,28 @@
     data() {
       return {
         bestResults: [],
-        currentResult: {}
+        currentResult: this.$store.state.result
       }
     },
     async created() {
       // Llamar a la api y que nos devuelva los mejores resultados
       const bestResults = await mockFetch('/ranking');
       this.setBestResults(bestResults);
-      this.setCurrentResult();
     },
     methods: {
       setBestResults: function (bestResults) {
         this.bestResults = bestResults;
       },
-      setCurrentResult: function () {
-        const level = this.$store.state.level.text;
-        const date = this.setDate();
-        const timer = this.setTimer();
-        this.currentResult = {level: level, date: date, timer: timer};
+      resetState: function () {
+        this.$store.commit('setLevel', {});
+        this.$store.commit('setAction', {});
+        this.$store.commit('setSudoku', {});
+        this.$store.commit('setIsOver', false);
+        this.$store.commit('setResult', {});
       },
-      setDate: function () {
-        const date = new Date(this.$store.state.sudoku.updatedAt);
-        const day = getDay(date);
-        const month = getMonth(date);
-        const year = getYear(date);
-        return day + "/" + month + "/" + year;
-      },
-      setTimer: function () {
-        const seconds = getSecondsAccumulated(this.$store.state.sudoku.seconds_accumulated);
-        const minutes = getMinutesAccumulated(this.$store.state.sudoku.seconds_accumulated);
-        return minutes + ':' + seconds;
+      takeActions: function () {
+        this.$emit('close');
+        this.resetState();
       }
     }
   }

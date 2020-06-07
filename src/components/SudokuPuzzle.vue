@@ -31,6 +31,7 @@
 
 <script>
   import Cell from "./Cell";
+  import {setDate, setTimer} from "../utils/helpers";
 
   export default {
     name: "SudokuPuzzle",
@@ -56,9 +57,10 @@
 
         this.cells.forEach(cell => {
           if (cell.position.row !== activeCell.position.row || cell.position.column !== activeCell.position.column) return;
-          console.log('isValidNumber: ', this.$store.state.sudoku.isValidNumber(this.selectedNumber, cell.position.row, cell.position.column));
+
           if (this.$store.state.sudoku.isValidNumber(this.selectedNumber, cell.position.row, cell.position.column)) {
             cell.number = this.selectedNumber;
+            this.checkIsOver();
           }
         });
       },
@@ -95,8 +97,23 @@
         } else if (this.selectedAction === 'mark') {
           this.markAction(activeCell);
         }
-        console.log('cells: ', this.cells);
-        console.log('cells State: ', this.$store.state.sudoku.cells);
+      },
+      checkIsOver: function () {
+        // Comprueba si el sudoku ha finalizado
+        const isOver = this.$store.state.sudoku.isOver();
+        if (isOver) {
+          this.$store.commit("setIsOver", isOver);
+          // Se hace una petición a la api para que borre el sudoku de la bbdd
+          // Se establece el resultado del sudoku para que se muestre en ranking
+          this.setCurrentResult();
+        }
+      },
+      setCurrentResult: function () {
+        const level = this.$store.state.level.text;
+        const date = setDate(this.$store.state.sudoku.updatedAt);
+        const timer = setTimer(this.$store.state.sudoku.seconds_accumulated);
+        const currentResult = {level: level, date: date, timer: timer};
+        this.$store.commit("setResult", currentResult);
       }
     }
   }
