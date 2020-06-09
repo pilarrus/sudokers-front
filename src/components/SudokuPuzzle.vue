@@ -5,6 +5,7 @@
                  v-for="cell in cells"
                  :class="[!cell.writable ? 'sudoku-puzzle-container-cell-unwritable ' : ''] +
                  [cell.number === selectedNumber || cell.grid.includes(selectedNumber) ? 'sudoku-puzzle-container-cell-highlight ' : ''] +
+                 [Object.keys(activeCell).length !== 0 && cell.position.row === activeCell.position.row && cell.position.column === activeCell.position.column && activeCell.isInvalid ? 'sudoku-puzzle-container-cell-invalid ' : ''] +
                  'sudoku-puzzle-container-cell-row' + cell.position.row + ' ' +
                  'sudoku-puzzle-container-cell-col' + cell.position.column"
                  :key="'divCell' + cell.position.row + cell.position.column"
@@ -65,6 +66,8 @@
             cell.number = this.selectedNumber;
             cell.grid = [];
             this.checkIsOver();
+          } else {
+            this.activeCell.isInvalid = true;
           }
         });
       },
@@ -118,6 +121,11 @@
         const timer = setTimer(this.$store.state.sudoku.seconds_accumulated);
         const currentResult = {level: level, date: date, timer: timer};
         this.$store.commit("setResult", currentResult);
+      }
+    },
+    updated() {
+      if (Object.keys(this.activeCell).length !== 0) {
+        this.activeCell.isInvalid = false;
       }
     }
   }
