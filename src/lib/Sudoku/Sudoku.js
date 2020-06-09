@@ -67,8 +67,8 @@ export default class Sudoku {
   }
 
   isValidNumberInRow(number, row) {
-    for (let columnn = 0; columnn < 9; columnn++) {
-      let cell = this.getCell(row, columnn);
+    for (let column = 0; column < 9; column++) {
+      let cell = this.getCell(row, column);
       if (cell.number === number) {
         return false;
       }
@@ -189,6 +189,53 @@ export default class Sudoku {
       }
     });
     return count;
+  }
+
+  deleteHelpNumbersInRow(number, row) {
+    for (let column = 0; column < 9; column++) {
+      let cell = this.getCell(row, column);
+      if (cell.grid.includes(number)) {
+        let index = cell.grid.findIndex(numberGrid => numberGrid === number);
+        cell.grid.splice(index, 1);
+      }
+    }
+  }
+
+  deleteHelpNumbersInColumn(number, column) {
+    for (let row = 0; row < 9; row++) {
+      let cell = this.getCell(row, column);
+      if (cell.grid.includes(number)) {
+        let index = cell.grid.findIndex(numberGrid => numberGrid === number);
+        cell.grid.splice(index, 1);
+      }
+    }
+  }
+
+  deleteHelpNumbersInSection(number, row, column) {
+    let firstRow = row - (row % 3);
+    let firstColumn = column - (column % 3);
+    let lastRow = firstRow + 2;
+    let lastColumn = firstColumn + 2;
+
+    for (let verifyRow = firstRow; verifyRow <= lastRow; verifyRow++) {
+      for (
+        let verifyColumn = firstColumn;
+        verifyColumn <= lastColumn;
+        verifyColumn++
+      ) {
+        let cell = this.getCell(verifyRow, verifyColumn);
+        if (cell.grid.includes(number)) {
+          let index = cell.grid.findIndex(numberGrid => numberGrid === number);
+          cell.grid.splice(index, 1);
+        }
+      }
+    }
+  }
+
+  deleteHelpNumbers(number, row, column) {
+    this.deleteHelpNumbersInRow(number, row);
+    this.deleteHelpNumbersInColumn(number, column);
+    this.deleteHelpNumbersInSection(number, row, column);
   }
 }
 

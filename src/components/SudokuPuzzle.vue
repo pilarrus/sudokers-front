@@ -65,6 +65,7 @@
           if (this.$store.state.sudoku.isValidNumber(this.selectedNumber, cell.position.row, cell.position.column)) {
             cell.number = this.selectedNumber;
             cell.grid = [];
+            this.$store.state.sudoku.deleteHelpNumbers(this.selectedNumber, cell.position.row, cell.position.column);
             this.checkIsOver();
           } else {
             this.activeCell.isInvalid = true;
