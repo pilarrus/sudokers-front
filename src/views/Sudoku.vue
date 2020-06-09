@@ -2,7 +2,8 @@
     <div class="sudoku">
         <div class="sudoku-top">
             <span class="sudoku-top-level">{{$store.state.level.text}}</span>
-            <Timer/>
+            <Timer v-if="$store.state.isOver" :stop="true"/>
+            <Timer v-else :stop="false"/>
         </div>
 
         <SudokuPuzzle :cells="cells" :selected-action="selectedAction" :selected-number="selectedNumber"/>

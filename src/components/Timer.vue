@@ -3,10 +3,13 @@
 </template>
 
 <script>
-    import {getSecondsAccumulated, getMinutesAccumulated} from "../utils/helpers";
+  import {getSecondsAccumulated, getMinutesAccumulated} from "../utils/helpers";
 
-    export default {
+  export default {
     name: "Timer",
+    props: {
+      stop: Boolean
+    },
     data() {
       return {
         initialSecondsAccumulated: this.$store.state.sudoku.seconds_accumulated,
@@ -33,15 +36,21 @@
           let currentTimestamp = Date.now();
           let secondDifference = parseInt((currentTimestamp - this.initialTimestamp) / 1000);
           this.secondsAccumulated = secondDifference + this.initialSecondsAccumulated;
+          this.$store.state.sudoku.seconds_accumulated = this.secondsAccumulated;
           this.formatTimer();
         }, 1000);
       },
       stopTimer: function () {
         clearInterval(this.intervalId);
-      },
+      }
     },
     created() {
       this.startTimer();
+    },
+    updated() {
+      if (this.stop) {
+        this.stopTimer();
+      }
     },
     destroyed() {
       this.stopTimer();
