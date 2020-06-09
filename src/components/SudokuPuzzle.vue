@@ -3,7 +3,10 @@
         <div class="sudoku-puzzle-container">
             <div class="sudoku-puzzle-container-cell pointer"
                  v-for="cell in cells"
-                 :class="[!cell.writable ? 'sudoku-puzzle-container-cell-unwritable' : ''] + ' ' +'sudoku-puzzle-container-cell-row' + cell.position.row + ' ' + 'sudoku-puzzle-container-cell-col' + cell.position.column"
+                 :class="[!cell.writable ? 'sudoku-puzzle-container-cell-unwritable ' : ''] +
+                 [cell.number === selectedNumber || cell.grid.includes(selectedNumber) ? 'sudoku-puzzle-container-cell-highlight ' : ''] +
+                 'sudoku-puzzle-container-cell-row' + cell.position.row + ' ' +
+                 'sudoku-puzzle-container-cell-col' + cell.position.column"
                  :key="'divCell' + cell.position.row + cell.position.column"
                  v-on:click="actionsCell(cell)">
 
@@ -60,6 +63,7 @@
 
           if (this.$store.state.sudoku.isValidNumber(this.selectedNumber, cell.position.row, cell.position.column)) {
             cell.number = this.selectedNumber;
+            cell.grid = [];
             this.checkIsOver();
           }
         });

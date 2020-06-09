@@ -39,8 +39,8 @@
     },
     data() {
       return {
-        selectedNumber: 0,
-        selectedAction: "",
+        selectedNumber: 1,
+        selectedAction: "paint",
         cells: this.$store.state.sudoku.cells
       }
     },

@@ -23,13 +23,12 @@
           {name: "mark", icon: "thumbtack"},
           {name: "paint", icon: "pencil-alt"}
         ],
-        buttonActive: ""
+        buttonActive: "paint"
       }
     },
     methods: {
       setActive: function (actionName) {
         this.buttonActive = actionName;
-        console.log("buttonActive: ", this.buttonActive);
       },
       setActions: function (actionName) {
         this.setActive(actionName)

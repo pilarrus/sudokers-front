@@ -11,13 +11,13 @@
   import ButtonNumber from "./buttons/ButtonNumber";
 
   export default {
-    name: "ButtonBar",
+    name: "NumberBar",
     components: {
       ButtonNumber
     },
     data() {
       return {
-        buttonActive: 0
+        buttonActive: 1
       }
     },
     methods: {

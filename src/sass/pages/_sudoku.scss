@@ -35,6 +35,10 @@
         &-unwritable {
           background-color: rgba($color-secondary, 0.3);
         }
+
+        &-highlight {
+          background-color: rgba($color-quaternary, 0.4);
+        }
       }
     }
   }
