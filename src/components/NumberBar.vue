@@ -1,8 +1,8 @@
 <template>
     <div class="sudoku-numbers">
         <div class="sudoku-numbers-container" v-for="n in 9" :key="'number' + n" v-on:click="takeActions(n)">
-            <ButtonNumber v-if="buttonActive === n" :number="n" :isActive="true" />
-            <ButtonNumber v-else :number="n" :isActive="false" />
+            <ButtonNumber v-if="buttonActive === n" :number="n" :isActive="true" :counter="$store.state.sudoku.countNumber(n)"/>
+            <ButtonNumber v-else :number="n" :isActive="false" :counter="$store.state.sudoku.countNumber(n)"/>
         </div>
     </div>
 </template>

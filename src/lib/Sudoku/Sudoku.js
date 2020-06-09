@@ -180,6 +180,16 @@ export default class Sudoku {
     }
     return true;
   }
+
+  countNumber(number) {
+    let count = 0;
+    this.cells.forEach(cell => {
+      if (cell.number === number) {
+        count++;
+      }
+    });
+    return count;
+  }
 }
 
 const generateSudoku = difficulty => {
