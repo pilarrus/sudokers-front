@@ -119,7 +119,7 @@
             headers: {'Content-Type': 'application/json'}
           });
 
-          if (!response.data.message) {
+          if (response.status !== 201) {
             this.notification = 'No se ha podido crear el usuario, vuelva a intentarlo en unos minutos';
             return undefined;
           }
