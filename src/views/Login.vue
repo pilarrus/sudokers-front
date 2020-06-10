@@ -14,13 +14,16 @@
 
         <input class="button button-submit" type="submit" value="Enviar" v-if="!isLoading">
         <Loading v-else />
+
+        <p v-if="notification">{{notification}}</p>
     </form>
 </template>
 
 <script>
-  import mockFetch from "../utils/mockFetch";
   import Loading from "../components/Loading";
-  import { redirect } from "../utils/helpers";
+  import { checkPassword, redirect } from "../utils/helpers";
+
+  const SERVER_ROUTE = process.env.VUE_APP_API_ROUTE;
 
   export default {
     name: "Login",
@@ -32,12 +35,13 @@
         isLoading: false,
         errorEmail: null,
         errorPassword: null,
+        notification: null,
         email: null,
         password: null
       }
     },
     methods: {
-      loading: function (isLoading) {
+      setLoading: function (isLoading) {
         this.isLoading = isLoading;
       },
       setUser: function (user) {
@@ -47,42 +51,67 @@
         e.preventDefault();
         e.stopPropagation();
       },
+      checkEmailIsValid: async function () {
+        if (!this.email) {
+          this.errorEmail = 'El email es obligatorio';
+          return false;
+        }
+        return true;
+      },
+      checkPasswordIsValid: function () {
+        if (!checkPassword(this.password)) {
+          this.errorPassword = 'La contraseña es obligatoria y debe tener al menos 4 numeros';
+          return false;
+        }
+        return true;
+      },
+      login: async function () {
+        try {
+          const response = await this.axios({
+            method: 'post',
+            url: SERVER_ROUTE + '/login',
+            data: {
+              "email": this.email,
+              "password": this.password
+            },
+            headers: {'Content-Type': 'application/json'}
+          });
+
+          if (response.status !== 200) {
+            this.notification = 'El usuario no existe o la contraseña no es correcta';
+            return undefined;
+          }
+          return response.data.message;
+
+        } catch (e) {
+          this.notification = 'El usuario no existe o la contraseña no es correcta';
+          return undefined;
+        }
+      },
       checkForm: async function () {
         this.errorEmail = null;
         this.errorPassword = null;
+        this.notification = null;
 
-        if (!this.email) {
-          this.errorEmail = 'El email es obligatorio';
-        }
-        if (!this.password) {
-          this.errorPassword = 'La contraseña es obligatoria';
-        }
-
-        if (this.email && this.password) {
-          const users = await mockFetch("/users");
-          const user = users.find(user => user.email === this.email);
-
-          if (!user) {
-            this.errorEmail = 'Usuario no registrado';
-            this.loading(false);
-            return false;
-          }
-
-          if (user.password !== this.password) {
-            this.errorPassword = 'Contraseña incorrecta';
-            this.loading(false);
-            return false;
-          }
-
-          this.setUser(user);
-          redirect("/levels");
+        const isEmailValid = await this.checkEmailIsValid(), isPasswordValid = this.checkPasswordIsValid();
+        if (!isEmailValid || !isPasswordValid) {
+          this.setLoading(false);
+          return;
         }
 
-        this.loading(false);
+        const user = await this.login();
+        if (typeof user === 'undefined') {
+          this.setLoading(false);
+          return;
+        }
+
+        this.setUser(user);
+        this.setLoading(false);
+        await redirect("/levels");
       },
       actions: function (e) {
         this.cancelEvent(e);
-        this.loading(true);
+        this.setLoading(true);
         this.checkForm();
       }
     }
