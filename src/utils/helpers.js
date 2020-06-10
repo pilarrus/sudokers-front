@@ -2,6 +2,11 @@ import router from "../router";
 
 const redirect = url => router.push({ path: url });
 
+const checkPassword = password => {
+  const strongRegex = new RegExp("^(?=.*[0-9])(?=.{4,})");
+  return strongRegex.test(password);
+};
+
 const getSecondsAccumulated = secondsAccumulated => {
   let seconds = parseInt(secondsAccumulated % 60);
   seconds = seconds < 10 ? "0" + seconds : seconds;
@@ -64,6 +69,7 @@ const setTimer = secondsAccumulated => {
 
 export {
   redirect,
+  checkPassword,
   getSecondsAccumulated,
   getMinutesAccumulated,
   getDay,
