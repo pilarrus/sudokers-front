@@ -1,10 +1,20 @@
 import Cell from "./Cell.js";
 
 export default class Sudoku {
-  constructor(difficulty, cells = [], seconds_accumulated = 0) {
+  constructor(
+    difficulty,
+    cells = [],
+    seconds_accumulated = 0,
+    user = {},
+    updatedAt = "",
+    id = ""
+  ) {
     this.cells = cells;
     this.difficulty = difficulty;
     this.seconds_accumulated = seconds_accumulated;
+    this.user = user;
+    this.updatedAt = updatedAt;
+    this.id = id;
   }
 
   initializeCells() {
