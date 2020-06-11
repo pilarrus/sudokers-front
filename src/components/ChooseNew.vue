@@ -53,14 +53,13 @@
         this.setLoading(true);
         const generatedSudoku = generateSudoku(this.$store.state.level.name);
         const savedSudoku = await this.saveSudoku(generatedSudoku);
-        const sudoku = new Sudoku(savedSudoku.difficulty, savedSudoku.cells, savedSudoku.seconds_accumulated, savedSudoku.user, savedSudoku.updatedAt);
+        const sudoku = new Sudoku(savedSudoku.difficulty, savedSudoku.cells, savedSudoku.seconds_accumulated, savedSudoku.user, savedSudoku.updatedAt, savedSudoku._id);
 
         if (typeof sudoku === 'undefined') {
           this.setLoading(false);
           return;
         }
         this.setSudoku(sudoku);
-
         const action = { key: "generate", sudokuId: sudoku.id };
         this.setAction(action);
         this.setLoading(false);

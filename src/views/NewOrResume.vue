@@ -3,12 +3,11 @@
         <h2>Elige qué quieres hacer</h2>
         <ChooseNew msg="Empezar nuevo sudoku"/>
         <div class="horizontalSeparator"/>
-        <ChooseOpen msg="Continuar sudoku guardado:" v-bind:sudokus="sudokus" v-bind:isLoading="isLoading"/>
+        <ChooseOpen msg="Continuar sudoku guardado:" :sudokus="sudokus" :isLoading="isLoading"/>
     </div>
 </template>
 
 <script>
-  // import mockFetch from "../utils/mockFetch";
   import ChooseNew from "../components/ChooseNew";
   import ChooseOpen from "../components/ChooseOpen";
 
