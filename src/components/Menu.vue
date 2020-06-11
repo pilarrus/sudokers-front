@@ -59,6 +59,8 @@
   import Modal from "./Modal";
   import Info from "./Info";
 
+  const SERVER_ROUTE = process.env.VUE_APP_API_ROUTE;
+
   export default {
     name: "Menu",
     components: {
@@ -105,6 +107,7 @@
       },
       resetSudoku: function () {
         this.$store.state.sudoku.reset();
+        this.updateSudoku();
       },
       resolveSudoku: function () {
         this.$store.state.sudoku.reset();
@@ -122,6 +125,26 @@
         this.$store.commit('setIsOver', false);
         this.$store.commit('setResult', {});
       },
+      updateSudoku: async function () {
+        try {
+          const response = await this.axios({
+            method: 'patch',
+            url: SERVER_ROUTE + '/sudokus/' + this.$store.state.sudoku.id,
+            data: {
+              "cells": this.$store.state.sudoku.cells
+            },
+            headers: {'Content-Type': 'application/json', 'token': this.$store.state.user.token}
+          });
+
+          if (response.status !== 200) {
+            console.log('Es posible que no se estén guardando los movimientos');
+          }
+          console.log('Se han guardado los cambios');
+
+        } catch (e) {
+          console.log('Error: Es posible que no se estén guardando los movimientos');
+        }
+      }
     }
   }
 </script>
