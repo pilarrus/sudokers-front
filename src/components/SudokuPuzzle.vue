@@ -37,6 +37,8 @@
   import Cell from "./Cell";
   import {setDate, setTimer} from "../utils/helpers";
 
+  const SERVER_ROUTE = process.env.VUE_APP_API_ROUTE;
+
   export default {
     name: "SudokuPuzzle",
     components: {
@@ -66,6 +68,7 @@
             cell.number = this.selectedNumber;
             cell.grid = [];
             this.$store.state.sudoku.deleteHelpNumbers(this.selectedNumber, cell.position.row, cell.position.column);
+            this.updateSudoku();
             this.checkIsOver();
           } else {
             this.activeCell.isInvalid = true;
@@ -77,6 +80,7 @@
           if (cell.position.row !== activeCell.position.row || cell.position.column !== activeCell.position.column) return;
           cell.number = 0;
           cell.grid = [];
+          this.updateSudoku();
         });
       },
       markAction: function (activeCell) {
@@ -91,6 +95,7 @@
           } else {
             cell.grid.splice(index, 1);
           }
+          this.updateSudoku();
         });
       },
       actionsCell: function (activeCell) {
@@ -107,7 +112,6 @@
         }
       },
       checkIsOver: function () {
-        // Comprueba si el sudoku ha finalizado
         const isOver = this.$store.state.sudoku.isOver();
         if (isOver) {
           this.$store.commit("setIsOver", isOver);
@@ -122,6 +126,27 @@
         const timer = setTimer(this.$store.state.sudoku.seconds_accumulated);
         const currentResult = {level: level, date: date, timer: timer};
         this.$store.commit("setResult", currentResult);
+        // Guardar en la bbdd el resultado
+      },
+      updateSudoku: async function () {
+        try {
+          const response = await this.axios({
+            method: 'patch',
+            url: SERVER_ROUTE + '/sudokus/' + this.$store.state.sudoku.id,
+            data: {
+              "cells": this.$store.state.sudoku.cells
+            },
+            headers: {'Content-Type': 'application/json', 'token': this.$store.state.user.token}
+          });
+
+          if (response.status !== 200) {
+            console.log('Es posible que no se estén guardando los movimientos');
+          }
+          console.log('Se han guardado los cambios');
+
+        } catch (e) {
+          console.log('Error: Es posible que no se estén guardando los movimientos');
+        }
       }
     },
     updated() {
