@@ -115,9 +115,8 @@
         const isOver = this.$store.state.sudoku.isOver();
         if (isOver) {
           this.$store.commit("setIsOver", isOver);
-          // Se hace una petición a la api para que borre el sudoku de la bbdd
-          // Se establece el resultado del sudoku para que se muestre en ranking
           this.setCurrentResult();
+          this.deleteSudoku();
         }
       },
       setCurrentResult: function () {
@@ -146,6 +145,23 @@
 
         } catch (e) {
           console.log('Error: Es posible que no se estén guardando los movimientos');
+        }
+      },
+      deleteSudoku: async function () {
+        try {
+          const response = await this.axios({
+            method: 'delete',
+            url: SERVER_ROUTE + '/sudokus/' + this.$store.state.sudoku.id,
+            headers: {'Content-Type': 'application/json', 'token': this.$store.state.user.token}
+          });
+
+          if (response.status !== 200) {
+            console.log('No se ha borrado el sudoku');
+          }
+          console.log('Se ha borrado el sudoku');
+
+        } catch (e) {
+          console.log('Error: No se ha borrado el sudoku');
         }
       }
     },
