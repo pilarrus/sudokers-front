@@ -5,6 +5,8 @@
 <script>
   import {getSecondsAccumulated, getMinutesAccumulated} from "../utils/helpers";
 
+  const SERVER_ROUTE = process.env.VUE_APP_API_ROUTE;
+
   export default {
     name: "Timer",
     props: {
@@ -31,12 +33,33 @@
         let minutes = getMinutesAccumulated(this.secondsAccumulated);
         this.setTimer(minutes, seconds);
       },
+      saveSecondsAccumulated: async function () {
+        try {
+          const response = await this.axios({
+            method: 'patch',
+            url: SERVER_ROUTE + '/sudokus/seconds/' + this.$store.state.sudoku.id,
+            data: {
+              "seconds_accumulated": this.secondsAccumulated
+            },
+            headers: {'Content-Type': 'application/json', 'token': this.$store.state.user.token}
+          });
+
+          if (response.status !== 200) {
+            console.log('No se han guardado los segundos');
+          }
+          console.log('Se han guardado los segundos');
+
+        } catch (e) {
+          console.log('Error: No se han guardado los segundos');
+        }
+      },
       startTimer: function () {
         this.intervalId = setInterval(() => {
           let currentTimestamp = Date.now();
           let secondDifference = parseInt((currentTimestamp - this.initialTimestamp) / 1000);
           this.secondsAccumulated = secondDifference + this.initialSecondsAccumulated;
           this.$store.state.sudoku.seconds_accumulated = this.secondsAccumulated;
+          this.saveSecondsAccumulated();
           this.formatTimer();
         }, 1000);
       },
