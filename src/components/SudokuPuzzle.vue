@@ -35,7 +35,6 @@
 
 <script>
   import Cell from "./Cell";
-  import {setDate, setTimer} from "../utils/helpers";
 
   const SERVER_ROUTE = process.env.VUE_APP_API_ROUTE;
 
@@ -112,20 +111,13 @@
         }
       },
       checkIsOver: function () {
-        const isOver = this.$store.state.sudoku.isOver();
-        if (isOver) {
+        const isOver = {};
+        isOver.status = this.$store.state.sudoku.isOver();
+        if (isOver.status) {
+          isOver.mode = 'manual';
           this.$store.commit("setIsOver", isOver);
-          this.setCurrentResult();
           this.deleteSudoku();
         }
-      },
-      setCurrentResult: function () {
-        const level = this.$store.state.level.text;
-        const date = setDate(this.$store.state.sudoku.updatedAt);
-        const timer = setTimer(this.$store.state.sudoku.seconds_accumulated);
-        const currentResult = {level: level, date: date, timer: timer};
-        this.$store.commit("setResult", currentResult);
-        // Guardar en la bbdd el resultado
       },
       updateSudoku: async function () {
         try {

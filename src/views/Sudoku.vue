@@ -2,7 +2,7 @@
     <div class="sudoku">
         <div class="sudoku-top">
             <span class="sudoku-top-level">{{$store.state.level.text}}</span>
-            <Timer v-if="$store.state.isOver" :stop="true"/>
+            <Timer v-if="$store.state.isOver.status" :stop="true"/>
             <Timer v-else :stop="false"/>
         </div>
 
@@ -12,7 +12,7 @@
 
         <ActionBar @send-selected-action="setSelectedAction"/>
 
-        <Modal v-if="$store.state.isOver">
+        <Modal v-if="$store.state.isOver.status">
             <Ranking @close="closeModalRanking"/>
         </Modal>
     </div>

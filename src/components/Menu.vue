@@ -112,10 +112,11 @@
       resolveSudoku: function () {
         this.$store.state.sudoku.reset();
         this.$store.state.sudoku.resolve();
-        this.setIsOver(true);
+        this.setIsOver();
         this.deleteSudoku();
       },
-      setIsOver: function (isOver) {
+      setIsOver: function () {
+        const isOver = { status: true, mode: 'automatic' };
         this.$store.commit("setIsOver", isOver);
       },
       resetState: function () {
@@ -123,8 +124,7 @@
         this.$store.commit('setLevel', {});
         this.$store.commit('setAction', {});
         this.$store.commit('setSudoku', {});
-        this.$store.commit('setIsOver', false);
-        this.$store.commit('setResult', {});
+        this.$store.commit('setIsOver', {status: false, mode: ''});
       },
       updateSudoku: async function () {
         try {

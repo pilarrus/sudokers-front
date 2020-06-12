@@ -9,15 +9,13 @@ export default new Vuex.Store({
     level: {},
     action: {},
     sudoku: {},
-    isOver: false,
-    result: {}
+    isOver: { status: false, mode: "" }
   },
   mutations: {
     setUser: (state, user) => (state.user = user),
     setLevel: (state, level) => (state.level = level),
     setAction: (state, action) => (state.action = action),
     setSudoku: (state, sudoku) => (state.sudoku = sudoku),
-    setIsOver: (state, isOver) => (state.isOver = isOver),
-    setResult: (state, result) => (state.result = result)
+    setIsOver: (state, isOver) => (state.isOver = isOver)
   }
 });
