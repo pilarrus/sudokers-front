@@ -20,13 +20,13 @@
 </template>
 
 <script>
-  import Loading from "../components/Loading";
-  import { checkPassword, redirect } from "../utils/helpers";
+  import Loading from '../components/Loading';
+  import { checkPassword, redirect } from '../utils/helpers';
 
   const SERVER_ROUTE = process.env.VUE_APP_API_ROUTE;
 
   export default {
-    name: "Login",
+    name: 'Login',
     components: {
       Loading
     },
@@ -107,7 +107,7 @@
 
         this.setUser(user);
         this.setLoading(false);
-        await redirect("/levels");
+        await redirect('/levels');
       },
       actions: function (e) {
         this.cancelEvent(e);
