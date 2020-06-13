@@ -1,7 +1,9 @@
 .form {
+  @include size($max-size, $max-size);
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 10px;
 
   & > * {
@@ -28,7 +30,7 @@
   }
 
   &-input {
-    width: 50%;
+    width: 75%;
     max-width: 250px;
     background-color: white;
     border-top-width: 0;

@@ -1,5 +1,6 @@
 .newOrResume {
   @include genericDisplay($max-size, $max-size);
+  padding: 0;
 
   & > * {
     margin-bottom: $margin-bottom-size;

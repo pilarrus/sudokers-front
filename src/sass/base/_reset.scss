@@ -28,6 +28,10 @@ body {
   max-width: 700px;
 }
 
+main {
+  @include genericDisplay($max-size, $max-size);
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
