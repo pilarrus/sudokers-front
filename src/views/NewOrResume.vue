@@ -10,6 +10,7 @@
 <script>
   import ChooseNew from "../components/ChooseNew";
   import ChooseOpen from "../components/ChooseOpen";
+  import {refreshToken} from "../utils/networkHelpers";
 
   const SERVER_ROUTE = process.env.VUE_APP_API_ROUTE;
 
@@ -48,6 +49,12 @@
           return sudokusByLevel;
 
         } catch (e) {
+          if (e.response.data.message === 'jwt expired') {
+            const isRefreshToken = await refreshToken();
+            if (isRefreshToken) {
+              return this.getSudokus(userId, level);
+            }
+          }
           return [];
         }
       },

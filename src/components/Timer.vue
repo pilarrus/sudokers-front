@@ -4,6 +4,7 @@
 
 <script>
   import {getSecondsAccumulated, getMinutesAccumulated} from "../utils/helpers";
+  import {refreshToken} from '../utils/networkHelpers';
 
   const SERVER_ROUTE = process.env.VUE_APP_API_ROUTE;
 
@@ -35,7 +36,7 @@
       },
       saveSecondsAccumulated: async function () {
         try {
-          const response = await this.axios({
+          await this.axios({
             method: 'patch',
             url: SERVER_ROUTE + '/sudokus/seconds/' + this.$store.state.sudoku.id,
             data: {
@@ -44,13 +45,10 @@
             headers: {'Content-Type': 'application/json', 'token': this.$store.state.user.token}
           });
 
-          if (response.status !== 200) {
-            console.log('No se han guardado los segundos');
-          }
-          console.log('Se han guardado los segundos');
-
         } catch (e) {
-          console.log('Error: No se han guardado los segundos');
+          if (e.response.data.message === 'jwt expired') {
+            await refreshToken();
+          }
         }
       },
       startTimer: function () {

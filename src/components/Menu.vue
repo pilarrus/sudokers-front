@@ -58,6 +58,7 @@
   import {redirect} from "../utils/helpers";
   import Modal from "./Modal";
   import Info from "./Info";
+  import {refreshToken} from "../utils/networkHelpers";
 
   const SERVER_ROUTE = process.env.VUE_APP_API_ROUTE;
 
@@ -128,7 +129,7 @@
       },
       updateSudoku: async function () {
         try {
-          const response = await this.axios({
+          await this.axios({
             method: 'patch',
             url: SERVER_ROUTE + '/sudokus/' + this.$store.state.sudoku.id,
             data: {
@@ -137,30 +138,30 @@
             headers: {'Content-Type': 'application/json', 'token': this.$store.state.user.token}
           });
 
-          if (response.status !== 200) {
-            console.log('Es posible que no se estén guardando los movimientos');
-          }
-          console.log('Se han guardado los cambios');
-
         } catch (e) {
-          console.log('Error: Es posible que no se estén guardando los movimientos');
+          if (e.response.data.message === 'jwt expired') {
+            const isRefreshToken = await refreshToken();
+            if (isRefreshToken) {
+              await this.updateSudoku();
+            }
+          }
         }
       },
       deleteSudoku: async function () {
         try {
-          const response = await this.axios({
+          await this.axios({
             method: 'delete',
             url: SERVER_ROUTE + '/sudokus/' + this.$store.state.sudoku.id,
             headers: {'Content-Type': 'application/json', 'token': this.$store.state.user.token}
           });
 
-          if (response.status !== 200) {
-            console.log('No se ha borrado el sudoku');
-          }
-          console.log('Se ha borrado el sudoku');
-
         } catch (e) {
-          console.log('Error: No se ha borrado el sudoku');
+          if (e.response.data.message === 'jwt expired') {
+            const isRefreshToken = await refreshToken();
+            if (isRefreshToken) {
+              await this.deleteSudoku();
+            }
+          }
         }
       }
     }

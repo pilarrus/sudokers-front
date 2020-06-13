@@ -24,6 +24,7 @@
 <script>
   import Loading from "./Loading";
   import {setDate, setTimer} from "../utils/helpers";
+  import {refreshToken} from "../utils/networkHelpers";
 
   const SERVER_ROUTE = process.env.VUE_APP_API_ROUTE;
 
@@ -47,10 +48,6 @@
       if (bestResults.length === 0) {
         bestResults = await this.initialiseRanking();
       }
-      if (!bestResults) {
-        console.log('No se han podido recuperar los resultados');
-        return;
-      }
       this.setBestResults(bestResults);
     },
     methods: {
@@ -68,18 +65,20 @@
       },
       updateRanking: async function (currentResult) {
         try {
-          const response = await this.axios({
+          await this.axios({
             method: 'patch',
             url: SERVER_ROUTE + '/rankings/' + this.$store.state.user.userId,
             data: currentResult,
             headers: {'Content-Type': 'application/json', token: this.$store.state.user.token}
           });
 
-          return response.data.message;
-
         } catch (e) {
-          console.log('Error: No se han devuelto los mejores resultados', e);
-          return [];
+          if (e.response.data.message === 'jwt expired') {
+            const isRefreshToken = await refreshToken();
+            if (isRefreshToken) {
+              await this.updateRanking(currentResult);
+            }
+          }
         }
       },
       setBestResults: function (bestResults) {
@@ -106,7 +105,12 @@
           return response.data.message;
 
         } catch (e) {
-          console.log('Error: No se han devuelto los mejores resultados', e);
+          if (e.response.data.message === 'jwt expired') {
+            const isRefreshToken = await refreshToken();
+            if (isRefreshToken) {
+              return this.getBestResults();
+            }
+          }
           return [];
         }
       },
@@ -119,15 +123,18 @@
           });
 
           if (response.status !== 201) {
-            console.log('No se ha inicializado el ranking');
             return false;
           }
 
-          console.log('Se ha inicializado el ranking');
           return response.data.message;
 
         } catch (e) {
-          console.log('Error: No se ha inicializado el ranking', e);
+          if (e.response.data.message === 'jwt expired') {
+            const isRefreshToken = await refreshToken();
+            if (isRefreshToken) {
+              return this.initialiseRanking();
+            }
+          }
           return false;
         }
       }

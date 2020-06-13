@@ -7,6 +7,7 @@
   import { redirect } from "../utils/helpers";
   import Sudoku, { generateSudoku } from "../lib/Sudoku/Sudoku";
   import Loading from "./Loading";
+  import {refreshToken} from "../utils/networkHelpers";
 
   const SERVER_ROUTE = process.env.VUE_APP_API_ROUTE;
 
@@ -46,6 +47,12 @@
           return response.data.data;
 
         } catch (e) {
+          if (e.response.data.message === 'jwt expired') {
+            const isRefreshToken = await refreshToken();
+            if (isRefreshToken) {
+              return this.saveSudoku(sudoku);
+            }
+          }
           return undefined;
         }
       },
@@ -53,12 +60,13 @@
         this.setLoading(true);
         const generatedSudoku = generateSudoku(this.$store.state.level.name);
         const savedSudoku = await this.saveSudoku(generatedSudoku);
-        const sudoku = new Sudoku(savedSudoku.difficulty, savedSudoku.cells, savedSudoku.seconds_accumulated, savedSudoku.user, savedSudoku.updatedAt, savedSudoku._id);
 
-        if (typeof sudoku === 'undefined') {
+        if (typeof savedSudoku === 'undefined') {
           this.setLoading(false);
           return;
         }
+
+        const sudoku = new Sudoku(savedSudoku.difficulty, savedSudoku.cells, savedSudoku.seconds_accumulated, savedSudoku.user, savedSudoku.updatedAt, savedSudoku._id);
         this.setSudoku(sudoku);
         const action = { key: "generate", sudokuId: sudoku.id };
         this.setAction(action);
