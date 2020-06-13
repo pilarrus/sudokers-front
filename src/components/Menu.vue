@@ -104,7 +104,7 @@
       logout: function () {
         this.resetState();
         this.$emit('send-is-open', false);
-        redirect('/');
+        redirect('/login');
       },
       resetSudoku: function () {
         this.$store.state.sudoku.reset();
