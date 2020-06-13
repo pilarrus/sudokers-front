@@ -7,8 +7,11 @@ import NotFound from "./views/NotFound";
 import Levels from "./views/Levels";
 import NewOrResume from "./views/NewOrResume";
 import Sudoku from "./views/Sudoku";
+import store from "./store";
 
 Vue.use(Router);
+
+const isAuthenticated = () => Object.keys(store.state.user).length !== 0;
 
 export default new Router({
   routes: [
@@ -30,17 +33,30 @@ export default new Router({
     {
       path: "/levels",
       name: "levels",
-      component: Levels
+      component: Levels,
+      beforeEnter: (to, from, next) => {
+        if (to.name !== "login" && !isAuthenticated()) next({ name: "login" });
+        else next();
+      }
     },
     {
       path: "/newOrResume/",
       name: "newOrResume",
-      component: NewOrResume
+      component: NewOrResume,
+      beforeEnter: (to, from, next) => {
+        if (to.name !== "levels" && !isAuthenticated()) next({ name: "login" });
+        else next();
+      }
     },
     {
       path: "/sudoku",
       name: "sudoku",
-      component: Sudoku
+      component: Sudoku,
+      beforeEnter: (to, from, next) => {
+        if (to.name !== "newOrResume" && !isAuthenticated())
+          next({ name: "login" });
+        else next();
+      }
     },
     {
       path: "*",
